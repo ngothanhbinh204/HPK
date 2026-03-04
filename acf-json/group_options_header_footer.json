@@ -1,0 +1,763 @@
+{
+    "key": "group_options_header_footer",
+    "title": "Options Page - Header & Footer",
+    "fields": [
+        {
+            "key": "field_options_tab_header",
+            "label": "⚙️ CẤU HÌNH HEADER",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_header_logo",
+            "label": "Logo Header",
+            "name": "header_logo",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Upload logo hiển thị ở header. Khuyến nghị: SVG hoặc PNG nền trong.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": 0,
+            "min_height": 0,
+            "min_size": 0,
+            "max_width": 0,
+            "max_height": 0,
+            "max_size": 0,
+            "mime_types": ""
+        },
+        {
+            "key": "field_header_hotline",
+            "label": "Số Hotline (hiển thị)",
+            "name": "header_hotline",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Ví dụ: (028) 3815 0134. Hiển thị ở nút hotline trên header.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "(028) 3815 0134",
+            "placeholder": "(028) 3815 0134",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_header_hotline_url",
+            "label": "Hotline URL (href tel:)",
+            "name": "header_hotline_url",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Ví dụ: tel:02838150134. Dùng format tel: để gọi trực tiếp.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "tel:02838150134",
+            "placeholder": "tel:02838150134",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_options_tab_company",
+            "label": "⚙️ THÔNG TIN CÔNG TY",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_footer_company_name",
+            "label": "Tên Công Ty",
+            "name": "footer_company_name",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Tên công ty hiển thị ở tiêu đề cột trái footer.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "CÔNG TY THIẾT BỊ MÁY VĂN PHÒNG HƯNG PHÚC KHANG",
+            "placeholder": "CÔNG TY THIẾT BỊ MÁY VĂN PHÒNG HƯNG PHÚC KHANG",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_footer_contact_list",
+            "label": "Danh Sách Liên Hệ",
+            "name": "footer_contact_list",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Danh sách thông tin liên hệ hiển thị trong footer (địa chỉ, điện thoại, email...). Mỗi dòng = 1 item.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "min": 0,
+            "max": 10,
+            "layout": "table",
+            "button_label": "Thêm thông tin liên hệ",
+            "rows_per_page": 20,
+            "collapsed": "",
+            "sub_fields": [
+                {
+                    "key": "field_contact_icon",
+                    "label": "Icon (FontAwesome)",
+                    "name": "contact_icon",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "Chọn icon hiển thị trước thông tin liên hệ.",
+                    "required": 0,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "fa-location-dot": "📍 Địa chỉ (fa-location-dot)",
+                        "fa-phone": "📞 Điện thoại (fa-phone)",
+                        "fa-mobile": "📱 Di động (fa-mobile)",
+                        "fa-envelope": "✉️  Email (fa-envelope)",
+                        "fa-fax": "🖨️  Fax (fa-fax)",
+                        "fa-globe": "🌐 Website (fa-globe)",
+                        "fa-clock": "🕐 Giờ làm việc (fa-clock)",
+                        "fa-building": "🏢 Văn phòng (fa-building)"
+                    },
+                    "default_value": "fa-location-dot",
+                    "return_format": "value",
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "ui": 1,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0,
+                    "parent_repeater": "field_footer_contact_list"
+                },
+                {
+                    "key": "field_contact_link",
+                    "label": "Nội Dung \/ Liên Kết",
+                    "name": "contact_link",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "Nhập tiêu đề hiển thị. Nếu có link (tel:, mailto:, https:) thì sẽ tạo thẻ <a>, không thì chỉ hiển thị text.",
+                    "required": 1,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "parent_repeater": "field_footer_contact_list"
+                }
+            ]
+        },
+        {
+            "key": "field_footer_license_info",
+            "label": "Thông Tin Giấy Phép \/ MST",
+            "name": "footer_license_info",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Mỗi dòng sẽ thành 1 thẻ <p>.\nDòng 1: Giấy phép kinh doanh được cấp bởi Sở kế hoạch và đầu tư TPHCM\nDòng 2: Mã số thuế: 0314753815",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Giấy phép kinh doanh được cấp bởi Sở kế hoạch và đầu tư TPHCM\nMã số thuế: 0314753815",
+            "rows": 3,
+            "new_lines": "",
+            "maxlength": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_options_tab_support",
+            "label": "⚙️ HỖ TRỢ 24\/7",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_footer_support_title",
+            "label": "Tiêu Đề Hộp Hỗ Trợ",
+            "name": "footer_support_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Tiêu đề hiển thị trong hộp support card. Ví dụ: HỖ TRỢ 24\/7",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "HỖ TRỢ 24\/7",
+            "placeholder": "HỖ TRỢ 24\/7",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_footer_support_icon_class",
+            "label": "Icon Tiêu Đề (FontAwesome)",
+            "name": "footer_support_icon_class",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Icon hiển thị cạnh tiêu đề hộp hỗ trợ.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "fa-headphones": "🎧 Headphones (fa-headphones)",
+                "fa-phone": "📞 Phone (fa-phone)",
+                "fa-comments": "💬 Comments (fa-comments)",
+                "fa-headset": "🎙️ Headset (fa-headset)",
+                "fa-circle-question": "❓ Question (fa-circle-question)"
+            },
+            "default_value": "fa-headphones",
+            "return_format": "value",
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
+        },
+        {
+            "key": "field_footer_support_items",
+            "label": "Các Mục Hỗ Trợ",
+            "name": "footer_support_items",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Mỗi mục là 1 nhóm (Tư vấn mua hàng \/ Tổng đài kỹ thuật...). Sẽ có divider ngăn cách giữa các mục.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "min": 0,
+            "max": 5,
+            "layout": "block",
+            "button_label": "Thêm mục hỗ trợ",
+            "rows_per_page": 20,
+            "collapsed": "",
+            "sub_fields": [
+                {
+                    "key": "field_support_label",
+                    "label": "Nhãn (Label)",
+                    "name": "support_label",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Ví dụ: Tư vấn mua hàng, Tổng đài kỹ thuật...",
+                    "required": 1,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "placeholder": "Tư vấn mua hàng",
+                    "default_value": "",
+                    "maxlength": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_footer_support_items"
+                },
+                {
+                    "key": "field_support_links",
+                    "label": "Danh Sách Liên Kết",
+                    "name": "support_links",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "Các liên kết thuộc mục này (số điện thoại, email...). link_class dùng để style CSS.",
+                    "required": 0,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "min": 1,
+                    "max": 5,
+                    "layout": "table",
+                    "button_label": "Thêm liên kết",
+                    "rows_per_page": 20,
+                    "collapsed": "",
+                    "sub_fields": [
+                        {
+                            "key": "field_sl_link_class",
+                            "label": "CSS Class",
+                            "name": "link_class",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "Class CSS áp dụng lên thẻ <a> để style màu sắc.",
+                            "required": 0,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "phone": "phone (màu số điện thoại)",
+                                "email": "email (màu email)",
+                                "link": "link  (màu link thường)"
+                            },
+                            "default_value": "phone",
+                            "return_format": "value",
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 1,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "create_options": 0,
+                            "save_options": 0,
+                            "parent_repeater": "field_support_links"
+                        },
+                        {
+                            "key": "field_sl_link_item",
+                            "label": "Liên Kết",
+                            "name": "link_item",
+                            "aria-label": "",
+                            "type": "link",
+                            "instructions": "Nhập tiêu đề + URL. URL dùng: tel:028... hoặc mailto:...",
+                            "required": 1,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "parent_repeater": "field_support_links"
+                        }
+                    ],
+                    "parent_repeater": "field_footer_support_items"
+                }
+            ]
+        },
+        {
+            "key": "field_options_tab_footer_bottom",
+            "label": "⚙️ FOOTER BOTTOM",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_footer_logo",
+            "label": "Logo Footer Bottom",
+            "name": "footer_logo",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Logo nhỏ ở footer bottom bên trái. Thường là logo trắng hoặc nền trong.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": 0,
+            "min_height": 0,
+            "min_size": 0,
+            "max_width": 0,
+            "max_height": 0,
+            "max_size": 0,
+            "mime_types": ""
+        },
+        {
+            "key": "field_footer_copyright",
+            "label": "Nội Dung Copyright",
+            "name": "footer_copyright",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Dòng copyright hiển thị ở footer bottom.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "© 2025 Hưng Phúc Khang. All Rights Reserved. Website designed by CanhCam.",
+            "placeholder": "© 2025 ...",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_footer_links",
+            "label": "Liên Kết Điều Hướng (Bottom)",
+            "name": "footer_links",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Các liên kết ở footer bottom: Sitemap, Terms & Conditions, Chính sách bảo mật...",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "min": 0,
+            "max": 8,
+            "layout": "table",
+            "button_label": "Thêm liên kết",
+            "rows_per_page": 20,
+            "collapsed": "",
+            "sub_fields": [
+                {
+                    "key": "field_footer_link_item",
+                    "label": "Liên Kết",
+                    "name": "link_item",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "parent_repeater": "field_footer_links"
+                }
+            ]
+        },
+        {
+            "key": "field_footer_social",
+            "label": "Icon Mạng Xã Hội",
+            "name": "footer_social",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Các icon social hiển thị ở footer bottom bên phải.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "min": 0,
+            "max": 10,
+            "layout": "table",
+            "button_label": "Thêm mạng xã hội",
+            "rows_per_page": 20,
+            "collapsed": "",
+            "sub_fields": [
+                {
+                    "key": "field_social_name",
+                    "label": "Tên (aria-label)",
+                    "name": "social_name",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Ví dụ: Facebook, YouTube...",
+                    "required": 0,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "placeholder": "Facebook",
+                    "default_value": "",
+                    "maxlength": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_footer_social"
+                },
+                {
+                    "key": "field_social_icon_class",
+                    "label": "Icon Class (FontAwesome)",
+                    "name": "social_icon_class",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Nhập tên icon (không cần prefix). Ví dụ: fa-facebook-f | fa-youtube | fa-linkedin-in",
+                    "required": 1,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "placeholder": "fa-facebook-f",
+                    "default_value": "",
+                    "maxlength": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_footer_social"
+                },
+                {
+                    "key": "field_social_url",
+                    "label": "URL",
+                    "name": "social_url",
+                    "aria-label": "",
+                    "type": "url",
+                    "instructions": "URL đầy đủ của trang mạng xã hội.",
+                    "required": 1,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "placeholder": "https:\/\/facebook.com\/...",
+                    "default_value": "",
+                    "parent_repeater": "field_footer_social"
+                }
+            ]
+        },
+        {
+            "key": "field_options_tab_cta",
+            "label": "⚙️ NÚT CTA CỐ ĐỊNH",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_footer_fixed_socials",
+            "label": "Các Nút CTA Cố Định",
+            "name": "footer_fixed_socials",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Các nút nổi cố định ở góc phải màn hình (email, điện thoại, messenger...). Thứ tự từ trên xuống.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "min": 0,
+            "max": 6,
+            "layout": "table",
+            "button_label": "Thêm nút CTA",
+            "rows_per_page": 20,
+            "collapsed": "",
+            "sub_fields": [
+                {
+                    "key": "field_cta_icon",
+                    "label": "Icon (FontAwesome)",
+                    "name": "icon",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "Chọn icon hiển thị cho nút CTA này.",
+                    "required": 1,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "fa-envelope": "✉️  Email (fa-envelope)",
+                        "fa-phone": "📞 Điện thoại (fa-phone)",
+                        "fa-mobile": "📱 Di động (fa-mobile)",
+                        "fa-facebook-messenger": "💬 Facebook Messenger (fa-facebook-messenger)",
+                        "fa-comment": "💬 Chat (fa-comment)",
+                        "fa-comments": "💬 Comments (fa-comments)",
+                        "fa-whatsapp": "✅ WhatsApp (fa-whatsapp)",
+                        "fa-zalo": "🔵 Zalo (fa-zalo)",
+                        "fa-line": "🟢 LINE (fa-line)"
+                    },
+                    "default_value": "fa-envelope",
+                    "return_format": "value",
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "ui": 1,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0,
+                    "parent_repeater": "field_footer_fixed_socials"
+                },
+                {
+                    "key": "field_cta_link",
+                    "label": "Liên Kết",
+                    "name": "link",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "Nhập tiêu đề (dùng làm aria-label) và URL.\nVí dụ: mailto:sales@..., tel:028..., https:\/\/m.me\/...",
+                    "required": 1,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "parent_repeater": "field_footer_fixed_socials"
+                }
+            ]
+        },
+        {
+            "key": "field_options_tab_config",
+            "label": "⚙️ CẤU HÌNH KỸ THUẬT",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_config_head",
+            "label": "Custom Code <head>",
+            "name": "field_config_head",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Chèn code vào trong thẻ <head>. Ví dụ: Google Tag Manager, Analytics, Facebook Pixel...",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "rows": 6,
+            "new_lines": "",
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_config_body",
+            "label": "Custom Code <\/body>",
+            "name": "field_config_body",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Chèn code trước thẻ đóng <\/body>. Ví dụ: GTM noscript, chat widget...",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "rows": 6,
+            "new_lines": "",
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "theme-settings"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Cấu hình toàn site: Header, Thông tin công ty, Hỗ trợ 24\/7, Footer bottom, Nút CTA cố định",
+    "show_in_rest": false,
+    "modified": 1772565514
+}

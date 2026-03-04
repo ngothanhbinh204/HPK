@@ -1,0 +1,132 @@
+{
+    "key": "group_page_about",
+    "title": "Page: About",
+    "fields": [
+        {
+            "key": "field_about_tab_banner",
+            "label": "1. Banner đầu trang",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_page_banner",
+            "label": "Ảnh Banner",
+            "name": "page_banner",
+            "type": "image",
+            "return_format": "array"
+        },
+        {
+            "key": "field_about_tab_intro",
+            "label": "2. Giới thiệu",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_about_subtitle",
+            "label": "Sub-title",
+            "name": "about_subtitle",
+            "type": "text",
+            "default_value": "VỀ HƯNG PHÚC KHANG"
+        },
+        {
+            "key": "field_about_titles",
+            "label": "Danh sách Tiêu đề chạy",
+            "name": "about_titles",
+            "type": "repeater",
+            "layout": "table",
+            "sub_fields": [
+                {
+                    "key": "field_about_title_text_2",
+                    "label": "Tiêu đề",
+                    "name": "title",
+                    "type": "text"
+                },
+                {
+                    "key": "field_about_title_bg_2",
+                    "label": "Ảnh nền chữ",
+                    "name": "bg_image",
+                    "type": "image",
+                    "return_format": "array"
+                }
+            ]
+        },
+        {
+            "key": "field_about_desc",
+            "label": "Mô tả chi tiết",
+            "name": "about_desc",
+            "type": "wysiwyg"
+        },
+        {
+            "key": "field_about_tab_counter",
+            "label": "3. Số liệu thống kê",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_home_counter_about",
+            "label": "Danh sách số liệu",
+            "name": "home_counter",
+            "type": "repeater",
+            "layout": "table",
+            "sub_fields": [
+                {
+                    "key": "field_counter_num_about",
+                    "label": "Số hiển thị (vd: 5+)",
+                    "name": "number",
+                    "type": "text"
+                },
+                {
+                    "key": "field_counter_desc_about",
+                    "label": "Mô tả",
+                    "name": "description",
+                    "type": "text"
+                }
+            ]
+        },
+        {
+            "key": "field_home_counter_bg_about",
+            "label": "Ảnh nền section",
+            "name": "home_counter_bg",
+            "type": "image",
+            "return_format": "array"
+        },
+        {
+            "key": "field_about_tab_gallery",
+            "label": "4. Thư viện ảnh slider",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_about_gallery",
+            "label": "Danh sách ảnh",
+            "name": "about_gallery",
+            "type": "gallery",
+            "return_format": "array"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "templates/template-about.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Nội dung cho trang Về chúng tôi"
+}

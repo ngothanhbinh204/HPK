@@ -1,0 +1,211 @@
+{
+    "key": "group_post_product",
+    "title": "Post: Product Details",
+    "fields": [
+        {
+            "key": "field_prod_tab_basic",
+            "label": "1. Thông tin cơ bản",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_prod_sku",
+            "label": "Mã SKU",
+            "name": "product_sku",
+            "type": "text"
+        },
+        {
+            "key": "field_prod_price",
+            "label": "Giá hiện tại (số)",
+            "name": "product_price",
+            "type": "number",
+            "instructions": "Để trống nếu muốn hiển thị 'Liên hệ'"
+        },
+        {
+            "key": "field_prod_price_old",
+            "label": "Giá cũ (số)",
+            "name": "product_price_old",
+            "type": "number"
+        },
+        {
+            "key": "field_prod_discount_tag",
+            "label": "Tag giảm giá (vd: -20%)",
+            "name": "product_discount_tag",
+            "type": "text"
+        },
+        {
+            "key": "field_prod_is_bestseller",
+            "label": "Sản phẩm Bestseller?",
+            "name": "product_is_bestseller",
+            "type": "true_false",
+            "ui": 1
+        },
+        {
+            "key": "field_prod_gallery",
+            "label": "Thư viện ảnh",
+            "name": "product_gallery",
+            "type": "gallery",
+            "return_format": "array"
+        },
+        {
+            "key": "field_prod_catalog",
+            "label": "File Catalog / Tính năng chi tiết (PDF)",
+            "name": "product_catalog",
+            "type": "file",
+            "return_format": "array"
+        },
+        {
+            "key": "field_prod_tab_specs",
+            "label": "2. Cấu hình & Ưu đãi",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_prod_configs",
+            "label": "Các nút Cấu hình (Icon + Label)",
+            "name": "product_configs",
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Thêm cấu hình",
+            "sub_fields": [
+                {
+                    "key": "field_conf_icon",
+                    "label": "Icon (FontAwesome)",
+                    "name": "icon_class",
+                    "type": "select",
+                    "instructions": "Chọn icon hiển thị cho cấu hình sản phẩm.",
+                    "choices": {
+                        "fa-print": "🖨️ In (fa-print)",
+                        "fa-copy": "📄 Photo (fa-copy)",
+                        "fa-scanner-image": "🔍 Quét (fa-scanner-image)",
+                        "fa-fax": "📠 Fax (fa-fax)",
+                        "fa-wifi": "🌐 Kết nối (fa-wifi)",
+                        "fa-bolt": "⚡ Tốc độ (fa-bolt)",
+                        "fa-image": "🖼️ Màu sắc (fa-image)",
+                        "fa-laptop": "💻 Kết nối PC (fa-laptop)",
+                        "fa-paper-plane": "✉️ Gửi nhận (fa-paper-plane)",
+                        "fa-clock": "🕐 Thời gian (fa-clock)"
+                    }
+                },
+                {
+                    "key": "field_conf_label",
+                    "label": "Nhãn",
+                    "name": "label",
+                    "type": "text"
+                }
+            ]
+        },
+        {
+            "key": "field_prod_promotions",
+            "label": "Danh sách Ưu đãi đặc quyền",
+            "name": "product_promotions",
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Thêm ưu đãi",
+            "sub_fields": [
+                {
+                    "key": "field_promo_text",
+                    "label": "Nội dung ưu đãi",
+                    "name": "text",
+                    "type": "wysiwyg",
+                    "media_upload": 0,
+                    "tabs": "visual"
+                }
+            ]
+        },
+        {
+            "key": "field_prod_summary_specs",
+            "label": "Thông số tóm tắt (Mô tả checklist)",
+            "name": "product_summary_specs",
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Thêm thông số",
+            "sub_fields": [
+                {
+                    "key": "field_spec_label",
+                    "label": "Tên thông số (Vd: Tốc độ copy)",
+                    "name": "label",
+                    "type": "text"
+                },
+                {
+                    "key": "field_spec_value",
+                    "label": "Giá trị (Vd: 43 tờ/phút)",
+                    "name": "value",
+                    "type": "text"
+                }
+            ]
+        },
+        {
+            "key": "field_prod_rental_note",
+            "label": "Ghi chú dịch vụ (Dưới nút Liên hệ)",
+            "name": "product_rental_note",
+            "type": "wysiwyg",
+            "instructions": "Nhập nội dung ghi chú dịch vụ hoặc link thuê máy.",
+            "media_upload": 0,
+            "tabs": "visual"
+        },
+        {
+            "key": "field_prod_tab_accordion",
+            "label": "3. Thông số & Giới thiệu (Accordion)",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_prod_accordions",
+            "label": "Danh sách các khối nội dung Accordion",
+            "name": "product_accordions",
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Thêm khối nội dung",
+            "sub_fields": [
+                {
+                    "key": "field_acc_title",
+                    "label": "Tiêu đề khối",
+                    "name": "title",
+                    "type": "text"
+                },
+                {
+                    "key": "field_acc_content_left",
+                    "label": "Nội dung bên trái (Chính)",
+                    "name": "content_left",
+                    "type": "wysiwyg"
+                },
+                {
+                    "key": "field_acc_content_right_img",
+                    "label": "Ảnh bên phải",
+                    "name": "content_right_image",
+                    "type": "image",
+                    "return_format": "array"
+                },
+                {
+                    "key": "field_acc_more_content",
+                    "label": "Nội dung ẩn (Xem thêm)",
+                    "name": "more_content",
+                    "type": "wysiwyg"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "product"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true,
+    "description": "Cấu hình chi tiết cho từng sản phẩm"
+}

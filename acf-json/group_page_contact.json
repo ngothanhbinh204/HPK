@@ -1,0 +1,122 @@
+{
+    "key": "group_page_contact",
+    "title": "Page: Contact",
+    "fields": [
+        {
+            "key": "field_contact_tab_info",
+            "label": "1. Thông tin liên hệ",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_contact_greeting",
+            "label": "Lời chào (Greeting)",
+            "name": "contact_greeting",
+            "type": "text",
+            "default_value": "Xin chào chúng tôi là"
+        },
+        {
+            "key": "field_contact_brand",
+            "label": "Tên Thương Hiệu \/ Công Ty",
+            "name": "contact_brand",
+            "type": "text",
+            "default_value": "Hưng Phúc Khang"
+        },
+        {
+            "key": "field_contact_details",
+            "label": "Danh sách chi tiết liên hệ (Icon + Text)",
+            "name": "contact_details",
+            "type": "repeater",
+            "layout": "table",
+            "sub_fields": [
+                {
+                    "key": "field_contact_item_icon",
+                    "label": "Icon (FontAwesome)",
+                    "name": "icon",
+                    "type": "select",
+                    "instructions": "Chọn icon hiển thị trước thông tin liên hệ.",
+                    "required": 0,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "fa-location-dot": "📍 Địa chỉ (fa-location-dot)",
+                        "fa-phone": "📞 Điện thoại (fa-phone)",
+                        "fa-mobile": "📱 Di động (fa-mobile)",
+                        "fa-envelope": "✉️ Email (fa-envelope)",
+                        "fa-fax": "🖨️ Fax (fa-fax)",
+                        "fa-globe": "🌐 Website (fa-globe)",
+                        "fa-clock": "🕐 Giờ làm việc (fa-clock)",
+                        "fa-building": "🏢 Văn phòng (fa-building)"
+                    },
+                    "default_value": "fa-location-dot",
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "ui": 1,
+                    "ajax": 0,
+                    "return_format": "value",
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_contact_item_text",
+                    "label": "Liên kết",
+                    "name": "link",
+                    "type": "link",
+                    "return_format": "array"
+                }
+            ]
+        },
+        {
+            "key": "field_contact_map",
+            "label": "Mã nhúng Map (Iframe)",
+            "name": "contact_map",
+            "type": "textarea"
+        },
+        {
+            "key": "field_contact_tab_form",
+            "label": "2. Form liên hệ",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_contact_form_header",
+            "label": "Tiêu đề và giới thiệu Form",
+            "name": "contact_form_header",
+            "type": "wysiwyg",
+            "instructions": "Nhập tiêu đề và nội dung dẫn dắt cho form liên hệ.",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1
+        },
+        {
+            "key": "field_contact_form_shortcode",
+            "label": "Shortcode Form (CF7)",
+            "name": "contact_form_shortcode",
+            "type": "text"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "templates/template-contact.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Nội dung cho trang Liên hệ"
+}

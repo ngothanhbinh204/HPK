@@ -30,6 +30,7 @@ function canhcam_style()
 
 	wp_enqueue_style('frontend-style-global', THEME_URI . '/styles/core.min.css', array(), GENERATE_VERSION);
 	wp_enqueue_style('frontend-style-main', THEME_URI . '/styles/main.min.css', array(), GENERATE_VERSION);
+	wp_enqueue_style('nouislider-style', 'https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.css', array(), '15.7.1');
 
 	/**
 	 * Script
@@ -40,6 +41,16 @@ function canhcam_style()
 			if (stripos($_SERVER['HTTP_USER_AGENT'], 'Chrome-Lighthouse') === false) {
 				wp_enqueue_script('front-end-global', THEME_URI . '/scripts/core.min.js', '', '', true);
 				wp_enqueue_script('front-end-main', THEME_URI . '/scripts/main.min.js', '', '', true);
+				
+				// NoUiSlider for Price Filter
+				wp_enqueue_script('nouislider-js', 'https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.js', array(), '15.7.1', true);
+				
+				// Custom Frontend JS
+				wp_enqueue_script('canhcam-frontend', THEME_URI . '/scripts/frontend.js', array('jquery', 'nouislider-js'), GENERATE_VERSION, true);
+
+				wp_localize_script('canhcam-frontend', 'canhcam_params', array(
+					'ajax_url' => admin_url('admin-ajax.php')
+				));
 			}
 		}
 	}

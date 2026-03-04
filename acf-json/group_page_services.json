@@ -1,0 +1,187 @@
+{
+    "key": "group_page_services",
+    "title": "Page: Services",
+    "fields": [
+        {
+            "key": "field_service_tab_hero",
+            "label": "1. Giới thiệu dịch vụ",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_service_hero_title",
+            "label": "Tiêu đề dịch vụ",
+            "name": "service_hero_title",
+            "type": "text",
+            "default_value": "BÁN MÁY PHOTOCOPY CHÍNH HÃNG"
+        },
+        {
+            "key": "field_service_hero_desc",
+            "label": "Mô tả dịch vụ",
+            "name": "service_hero_desc",
+            "type": "wysiwyg"
+        },
+        {
+            "key": "field_service_hero_counters",
+            "label": "Chỉ số (Metrics/Counter)",
+            "name": "service_hero_counters",
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Thêm chỉ số",
+            "sub_fields": [
+                {
+                    "key": "field_metric_num",
+                    "label": "Số (vd: 150+)",
+                    "name": "number",
+                    "type": "text"
+                },
+                {
+                    "key": "field_metric_desc",
+                    "label": "Mô tả",
+                    "name": "description",
+                    "type": "text"
+                }
+            ]
+        },
+        {
+            "key": "field_service_hero_btn_left",
+            "label": "Nút bấm trái (Gửi liên hệ)",
+            "name": "service_hero_btn_left",
+            "type": "link"
+        },
+        {
+            "key": "field_service_hero_btn_right",
+            "label": "Nút bấm phải (Xem dòng máy)",
+            "name": "service_hero_btn_right",
+            "type": "link"
+        },
+        {
+            "key": "field_service_hero_image",
+            "label": "Ảnh minh họa bên phải",
+            "name": "service_hero_image",
+            "type": "image",
+            "return_format": "array"
+        },
+        {
+            "key": "field_service_tab_commit",
+            "label": "2. Cam kết",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_home_6_title_service",
+            "label": "Tiêu đề section",
+            "name": "home_6_title",
+            "type": "text",
+            "default_value": "Cam kết chất lượng"
+        },
+        {
+            "key": "field_home_6_items_service",
+            "label": "Danh sách cam kết",
+            "name": "home_6_items",
+            "type": "repeater",
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_commit_icon_service",
+                    "label": "Icon",
+                    "name": "icon",
+                    "type": "image",
+                    "return_format": "array"
+                },
+                {
+                    "key": "field_commit_title_service",
+                    "label": "Tiêu đề",
+                    "name": "title",
+                    "type": "text"
+                },
+                {
+                    "key": "field_commit_desc_service",
+                    "label": "Mô tả",
+                    "name": "description",
+                    "type": "textarea",
+                    "rows": 2
+                }
+            ]
+        },
+        {
+            "key": "field_service_tab_sale",
+            "label": "3. Sản phẩm liên quan",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_home_sale_title_service",
+            "label": "Tiêu đề section",
+            "name": "home_sale_title",
+            "type": "text",
+            "default_value": "SẢN PHẨM ĐANG GIẢM GIÁ"
+        },
+        {
+            "key": "field_home_sale_cats_service",
+            "label": "Chọn danh mục sản phẩm",
+            "name": "home_sale_cats",
+            "type": "taxonomy",
+            "taxonomy": "product_cat",
+            "field_type": "multi_select",
+            "return_format": "object"
+        },
+        {
+            "key": "field_service_tab_contact",
+            "label": "4. Form tư vấn",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_home_contact_title_service",
+            "label": "Tiêu đề form",
+            "name": "home_contact_title",
+            "type": "text",
+            "default_value": "LIÊN HỆ TƯ VẤN"
+        },
+        {
+            "key": "field_home_contact_desc_service",
+            "label": "Mô tả ngắn",
+            "name": "home_contact_desc",
+            "type": "textarea",
+            "rows": 2
+        },
+        {
+            "key": "field_home_contact_form_service",
+            "label": "Shortcode Form (CF7)",
+            "name": "home_contact_form_shortcode",
+            "type": "text"
+        },
+        {
+            "key": "field_home_contact_image_service",
+            "label": "Ảnh minh họa",
+            "name": "home_contact_image",
+            "type": "image",
+            "return_format": "array"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "templates/template-services.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true,
+    "description": "Nội dung cho trang Listing Dịch vụ (hoặc Chi tiết dịch vụ tĩnh)"
+}

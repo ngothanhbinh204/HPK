@@ -1,0 +1,386 @@
+{
+    "key": "group_page_home",
+    "title": "Page: Home",
+    "fields": [
+        {
+            "key": "field_home_tab_hero",
+            "label": "1. Hero Slider",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_home_hero_slides",
+            "label": "Danh sách Slide",
+            "name": "home_hero_slides",
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Thêm Slide",
+            "sub_fields": [
+                {
+                    "key": "field_hero_bg_image",
+                    "label": "Ảnh nền",
+                    "name": "bg_image",
+                    "type": "image",
+                    "return_format": "array"
+                },
+                {
+                    "key": "field_hero_title",
+                    "label": "Tiêu đề",
+                    "name": "title",
+                    "type": "text"
+                },
+                {
+                    "key": "field_hero_desc",
+                    "label": "Mô tả",
+                    "name": "description",
+                    "type": "textarea",
+                    "rows": 3
+                },
+                {
+                    "key": "field_hero_button",
+                    "label": "Nút bấm",
+                    "name": "button",
+                    "type": "link"
+                },
+                {
+                    "key": "field_hero_product_image",
+                    "label": "Ảnh sản phẩm nổi bật",
+                    "name": "product_image",
+                    "type": "image",
+                    "return_format": "array"
+                }
+            ]
+        },
+        {
+            "key": "field_home_tab_about",
+            "label": "2. Về chúng tôi",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_home_about_subtitle",
+            "label": "Sub-title",
+            "name": "home_about_subtitle",
+            "type": "text",
+            "default_value": "VỀ HƯNG PHÚC KHANG"
+        },
+        {
+            "key": "field_home_about_titles",
+            "label": "Danh sách Tiêu đề chạy (Sliding Titles)",
+            "name": "home_about_titles",
+            "type": "repeater",
+            "layout": "table",
+            "sub_fields": [
+                {
+                    "key": "field_about_title_text",
+                    "label": "Tiêu đề",
+                    "name": "title",
+                    "type": "text"
+                },
+                {
+                    "key": "field_about_title_bg",
+                    "label": "Ảnh nền chữ",
+                    "name": "bg_image",
+                    "type": "image",
+                    "return_format": "array"
+                }
+            ]
+        },
+        {
+            "key": "field_home_about_desc",
+            "label": "Mô tả chi tiết",
+            "name": "home_about_desc",
+            "type": "wysiwyg"
+        },
+        {
+            "key": "field_home_about_btn",
+            "label": "Nút bấm",
+            "name": "home_about_btn",
+            "type": "link"
+        },
+        {
+            "key": "field_home_about_img_large",
+            "label": "Ảnh lớn bên phải",
+            "name": "home_about_img_large",
+            "type": "image",
+            "return_format": "array"
+        },
+        {
+            "key": "field_home_about_img_small",
+            "label": "Ảnh nhỏ bên phải",
+            "name": "home_about_img_small",
+            "type": "image",
+            "return_format": "array"
+        },
+        {
+            "key": "field_home_tab_counter",
+            "label": "3. Số liệu thống kê",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_home_counter",
+            "label": "Danh sách số liệu",
+            "name": "home_counter",
+            "type": "repeater",
+            "layout": "table",
+            "sub_fields": [
+                {
+                    "key": "field_counter_num",
+                    "label": "Số hiển thị (vd: 5+)",
+                    "name": "number",
+                    "type": "text"
+                },
+                {
+                    "key": "field_counter_desc",
+                    "label": "Mô tả",
+                    "name": "description",
+                    "type": "text"
+                }
+            ]
+        },
+        {
+            "key": "field_home_counter_bg",
+            "label": "Ảnh nền section",
+            "name": "home_counter_bg",
+            "type": "image",
+            "return_format": "array"
+        },
+        {
+            "key": "field_home_tab_sale",
+            "label": "4. Sản phẩm giảm giá",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_home_sale_title",
+            "label": "Tiêu đề section",
+            "name": "home_sale_title",
+            "type": "text",
+            "default_value": "SẢN PHẨM ĐANG GIẢM GIÁ"
+        },
+        {
+            "key": "field_home_sale_cats",
+            "label": "Chọn các danh mục hiển thị (Tabs)",
+            "name": "home_sale_cats",
+            "type": "taxonomy",
+            "taxonomy": "product_cat",
+            "field_type": "multi_select",
+            "add_term": 0,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "object"
+        },
+        {
+            "key": "field_home_tab_service",
+            "label": "5. Dịch vụ",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_home_service_title",
+            "label": "Tiêu đề section",
+            "name": "home_service_title",
+            "type": "text",
+            "default_value": "DỊCH VỤ CỦA CHÚNG TÔI"
+        },
+        {
+            "key": "field_home_service_items",
+            "label": "Danh sách dịch vụ",
+            "name": "home_service_items",
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Thêm dịch vụ",
+            "sub_fields": [
+                {
+                    "key": "field_service_image",
+                    "label": "Ảnh minh họa (bên trái)",
+                    "name": "image",
+                    "type": "image",
+                    "return_format": "array"
+                },
+                {
+                    "key": "field_service_icon",
+                    "label": "Icon",
+                    "name": "icon",
+                    "type": "image",
+                    "return_format": "array"
+                },
+                {
+                    "key": "field_service_title",
+                    "label": "Tiêu đề",
+                    "name": "title",
+                    "type": "text"
+                },
+                {
+                    "key": "field_service_desc",
+                    "label": "Mô tả ngắn",
+                    "name": "description",
+                    "type": "textarea",
+                    "rows": 2
+                },
+                {
+                    "key": "field_service_link",
+                    "label": "Liên kết",
+                    "name": "link",
+                    "type": "link"
+                }
+            ]
+        },
+        {
+            "key": "field_home_tab_commit",
+            "label": "6. Cam kết",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_home_6_title",
+            "label": "Tiêu đề section",
+            "name": "home_6_title",
+            "type": "text",
+            "default_value": "Cam kết chất lượng"
+        },
+        {
+            "key": "field_home_6_items",
+            "label": "Danh sách cam kết",
+            "name": "home_6_items",
+            "type": "repeater",
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_commit_icon",
+                    "label": "Icon",
+                    "name": "icon",
+                    "type": "image",
+                    "return_format": "array"
+                },
+                {
+                    "key": "field_commit_title",
+                    "label": "Tiêu đề",
+                    "name": "title",
+                    "type": "text"
+                },
+                {
+                    "key": "field_commit_desc",
+                    "label": "Mô tả",
+                    "name": "description",
+                    "type": "textarea",
+                    "rows": 2
+                }
+            ]
+        },
+        {
+            "key": "field_home_tab_partner",
+            "label": "7. Đối tác",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_home_partners_title",
+            "label": "Tiêu đề section",
+            "name": "home_partners_title",
+            "type": "text",
+            "default_value": "Đối tác khách hàng"
+        },
+        {
+            "key": "field_home_partners",
+            "label": "Danh sách logo đối tác",
+            "name": "home_partners",
+            "type": "gallery",
+            "return_format": "array"
+        },
+        {
+            "key": "field_home_tab_news",
+            "label": "8. Tin tức",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_home_news_title",
+            "label": "Tiêu đề section",
+            "name": "home_news_title",
+            "type": "text",
+            "default_value": "Tin tức nổi bật"
+        },
+        {
+            "key": "field_home_news_cats",
+            "label": "Chọn các danh mục hiển thị (Tabs)",
+            "name": "home_news_cats",
+            "type": "taxonomy",
+            "taxonomy": "category",
+            "field_type": "multi_select",
+            "add_term": 0,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "object"
+        },
+        {
+            "key": "field_home_tab_contact",
+            "label": "9. Liên hệ",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_home_contact_title",
+            "label": "Tiêu đề section",
+            "name": "home_contact_title",
+            "type": "text",
+            "default_value": "LIÊN HỆ TƯ VẤN"
+        },
+        {
+            "key": "field_home_contact_desc",
+            "label": "Mô tả ngắn",
+            "name": "home_contact_desc",
+            "type": "textarea",
+            "rows": 2
+        },
+        {
+            "key": "field_home_contact_image",
+            "label": "Ảnh minh họa bên phải",
+            "name": "home_contact_image",
+            "type": "image",
+            "return_format": "array"
+        },
+        {
+            "key": "field_home_contact_form",
+            "label": "Shortcode Form (CF7)",
+            "name": "home_contact_form_shortcode",
+            "type": "text"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "templates/template-home.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Toàn bộ nội dung cho trang chủ"
+}
