@@ -116,7 +116,7 @@ if ( function_exists('get_field') ) {
 									<?php if ( $contact_icon ) : ?>
 										<i class="<?php echo esc_attr( $icon_class ); ?>"></i>
 									<?php endif; ?>
-									<?php if ( ! empty( $contact_link['url'] ) && $contact_link['url'] !== '#' ) : ?>
+									<?php if ( ! empty( $contact_link['url'] ) ) : ?>
 										<a href="<?php echo esc_url( $contact_link['url'] ); ?>"
 										   <?php echo $contact_link['target'] ? 'target="' . esc_attr($contact_link['target']) . '"' : ''; ?>>
 											<span><?php echo esc_html( $contact_link['title'] ); ?></span>
@@ -126,20 +126,7 @@ if ( function_exists('get_field') ) {
 									<?php endif; ?>
 								</li>
 							<?php endwhile; ?>
-						<?php else : ?>
-							<?php /* Fallback mặc định khi chưa nhập ACF */ ?>
-							<li>
-								<i class="fa-solid fa-location-dot"></i>
-								<span>17/11 Đồng Xoài, Phường 13, Quận Tân Bình, Tp. Hồ Chí Minh</span>
-							</li>
-							<li>
-								<i class="fa-solid fa-phone"></i>
-								<a href="tel:02838150134"><span>(028) 3815 0134 - (028) 3815 0144</span></a>
-							</li>
-							<li>
-								<i class="fa-solid fa-envelope"></i>
-								<a href="mailto:sales@hungphuckhang.com"><span>sales@hungphuckhang.com</span></a>
-							</li>
+					
 						<?php endif; ?>
 					</ul>
 

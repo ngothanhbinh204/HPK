@@ -1,28 +1,37 @@
 <?php
 /* ── Section 4: Sản phẩm đang giảm giá (Tabs) ── */
+$icon_title = get_field('icon_title');
 $sale_title = get_field('home_sale_title') ?: 'SẢN PHẨM ĐANG GIẢM GIÁ';
 $sale_cats = get_field('home_sale_cats'); // Taxonomy: product_cat
+$view_shop = get_field('view_shop');
 ?>
 <section class="home-4 section bg-Utility-gray-50 product-tabs-slider-section">
 	<div class="container-seller">
 		<div class="section-header">
-			<div class="title flex items-center justify-center gap-2">
-				<div class="icon-fire"><img class="lozad" data-src="<?php echo get_template_directory_uri(); ?>/img/fire_icon.svg" alt="Fire Icon" /></div>
+			<div class="title flex items-end justify-center gap-2">
+				<?php if($icon_title) : ?>
+				<div class="icon-fire">
+					<img class="lozad" data-src="<?php echo $icon_title['url']; ?>" alt="<?php echo $icon_title['alt']; ?>" />
+				</div>
+				<?php endif; ?>
 				<h2 class="title-sale"><?php echo esc_html($sale_title); ?></h2>
 			</div>
 			<?php if ( $sale_cats ) : ?>
 				<div class="tabs">
-					<ul>
-						<li class="tab-item active" data-tab="all"><?php _e('Tất cả', 'canhcamtheme'); ?></li>
+					<ul class="tabs-scroll-mobile" data-category-pool="<?php echo esc_attr( implode(',', wp_list_pluck( $sale_cats, 'term_id' )) ); ?>">
+						<li class="tab-item active" data-category-id="all" data-tab="all"><?php _e('Tất cả', 'canhcamtheme'); ?></li>
 						<?php foreach ( $sale_cats as $cat ) : ?>
-							<li class="tab-item" data-tab="cat-<?php echo $cat->term_id; ?>"><?php echo esc_html($cat->name); ?></li>
+							<li class="tab-item" data-category-id="<?php echo $cat->term_id; ?>" data-tab="cat-<?php echo $cat->term_id; ?>"><?php echo esc_html($cat->name); ?></li>
 						<?php endforeach; ?>
 					</ul>
 				</div>
 			<?php endif; ?>
 		</div>
 
-		<div class="relative">
+		<div class="relative" id="product-filter-result">
+			<div class="loading-overlay">
+				<div class="spinner"></div>
+			</div>
 			<div class="swiper home-4-swiper px-4">
 				<div class="swiper-wrapper">
 					<?php
@@ -67,8 +76,10 @@ $sale_cats = get_field('home_sale_cats'); // Taxonomy: product_cat
 				<div class="swiper-button-prev"><i class="fa-solid fa-chevron-left"></i></div>
 				<div class="swiper-button-next"><i class="fa-solid fa-chevron-right"></i></div>
 			</div>
-			<div class="block-btn text-center mt-8">
-				<a class="btn btn-primary" href="<?php echo get_post_type_archive_link('product'); ?>"><?php _e('Xem tất cả', 'canhcamtheme'); ?></a>
+			<div class="block-btn text-center mt-10">
+				<?php if($view_shop) : ?>
+					<a class="btn btn-primary" href="<?php echo $view_shop['url']; ?>"><?php echo $view_shop['title']; ?></a>
+				<?php endif; ?>
 			</div>
 		</div>
 	</div>

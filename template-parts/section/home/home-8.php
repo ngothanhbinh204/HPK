@@ -11,12 +11,15 @@ $home_news_cats = get_field('home_news_cats'); // Taxonomy: category
 				<li class="tab-item active" data-tab="all"><?php _e('Tất cả', 'canhcamtheme'); ?></li>
 				<?php if ( $home_news_cats ) : ?>
 					<?php foreach ( $home_news_cats as $cat ) : ?>
-						<li class="tab-item" data-tab="cat-<?php echo $cat->term_id; ?>"><?php echo esc_html($cat->name); ?></li>
+						<li class="tab-item" data-category-id="<?php echo $cat->term_id; ?>" data-tab="cat-<?php echo $cat->term_id; ?>"><?php echo esc_html($cat->name); ?></li>
 					<?php endforeach; ?>
 				<?php endif; ?>
 			</ul>
 		</div>
-		<div class="news-slider-relative" data-aos="fade-up" data-aos-delay="400">
+		<div class="news-slider-relative" id="news-filter-result" data-aos="fade-up" data-aos-delay="400">
+			<div class="loading-overlay">
+				<div class="spinner"></div>
+			</div>
 			<div class="swiper home-8-swiper">
 				<div class="swiper-wrapper">
 					<?php

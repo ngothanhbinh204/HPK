@@ -1,13 +1,178 @@
 /**
  * Frontend Scripts for CanhCam Theme
  */
+
+
+
 (function($) {
 	'use strict';
 
 	$(document).ready(function() {
 		initPriceFilter();
 		initAjaxFilters();
+		initNewsFilter();
+		initProductFilter();
 	});
+
+	/**
+	 * AJAX Filter Products by Category (Home Page)
+	 */
+	function initProductFilter() {
+		const section = $('.home-4');
+		if (!section.length) return;
+
+		let home4Swiper;
+
+		const initSwiper = () => {
+			if ($('.home-4-swiper').length > 0 && typeof Swiper !== 'undefined') {
+				if (home4Swiper) home4Swiper.destroy(true, true);
+				home4Swiper = new Swiper(".home-4-swiper", {
+					slidesPerView: 1,
+					spaceBetween: 10,
+					navigation: {
+						nextEl: ".home-4 .swiper-button-next",
+						prevEl: ".home-4 .swiper-button-prev",
+					},
+					breakpoints: {
+						640: { slidesPerView: 2, spaceBetween: 20 },
+						768: { slidesPerView: 3, spaceBetween: 20 },
+						1024: { slidesPerView: 4, spaceBetween: 30 },
+					},
+					autoplay: {
+						delay: 5000,
+						disableOnInteraction: false,
+					},
+					observer: true,
+					observeParents: true,
+				});
+			}
+		};
+
+		// Initial Call
+		initSwiper();
+
+		// Tab Click Event
+		$(document).on('click', '.home-4 .tab-item', function(e) {
+			const $this = $(this);
+			const categoryId = $this.attr('data-category-id') || 'all';
+			const categoryPool = section.find('ul').attr('data-category-pool') || '';
+			const swiperWrapper = section.find('.swiper-wrapper');
+			const loadingOverlay = section.find('.loading-overlay');
+
+			if ($this.hasClass('active')) return;
+
+			// Update Tab UI
+			$('.home-4 .tab-item').removeClass('active');
+			$this.addClass('active');
+
+			// Show Loading
+			loadingOverlay.addClass('active');
+
+			$.ajax({
+				url: canhcam_params.ajax_url,
+				type: 'POST',
+				data: {
+					action: 'filter_products_by_category',
+					category_id: categoryId,
+					category_pool: categoryPool
+				},
+				success: function(response) {
+					if (response.success) {
+						swiperWrapper.html(response.data);
+						initSwiper();
+						
+						// Re-init AOS & Lozad
+						if (typeof AOS !== 'undefined') AOS.refresh();
+						refreshPlugins();
+					}
+				},
+				error: function(err) {
+					console.error("Error filtering products:", err);
+				},
+				complete: function() {
+					loadingOverlay.removeClass('active');
+				}
+			});
+		});
+
+	}
+
+
+
+	/**
+	 * AJAX Filter News by Category (Home Page)
+	 */
+	function initNewsFilter() {
+		const section = $('.home-8');
+		if (!section.length) return;
+
+		let home8Swiper;
+
+		const initSwiper = () => {
+			// Swiper might be initialized in main.min.js, 
+			// so we check if the instance exists or just re-init on the element
+			if ($('.home-8-swiper').length > 0 && typeof Swiper !== 'undefined') {
+				home8Swiper = new Swiper(".home-8-swiper", {
+					slidesPerView: 1,
+					spaceBetween: 12,
+					navigation: {
+						nextEl: ".home-8-next",
+						prevEl: ".home-8-prev",
+					},
+					autoplay: {
+						delay: 5000,
+						disableOnInteraction: false,
+					},
+					observer: true,
+					observeParents: true,
+				});
+			}
+		};
+
+		// Tab Click Event
+		$(document).on('click', '.home-8 .tab-item', function(e) {
+			const $this = $(this);
+			const categoryId = $this.data('category-id') || 'all';
+			const swiperWrapper = section.find('.swiper-wrapper');
+			const loadingOverlay = section.find('.loading-overlay');
+
+			if ($this.hasClass('active')) return;
+
+			// Update Tab UI
+			$('.home-8 .tab-item').removeClass('active');
+			$this.addClass('active');
+
+			// Show Loading
+			loadingOverlay.addClass('active');
+
+			$.ajax({
+				url: canhcam_params.ajax_url,
+				type: 'POST',
+				data: {
+					action: 'filter_news_by_category',
+					category_id: categoryId
+				},
+				success: function(response) {
+					if (response.success) {
+						swiperWrapper.html(response.data);
+						initSwiper();
+						
+						// Re-init AOS
+						if (typeof AOS !== 'undefined') {
+							AOS.refresh();
+						}
+					}
+				},
+				error: function(err) {
+					console.error("Error filtering news:", err);
+				},
+				complete: function() {
+					loadingOverlay.removeClass('active');
+				}
+			});
+		});
+	}
+
 
 	/**
 	 * AJAX Full Filtering & Load More
@@ -65,6 +230,9 @@
 		});
 
 		// 5. Remove Filter
+		// mặc đinh "btn-remove-filter" hidden
+		$('.btn-remove-filter').hide();
+
 		$(document).on('click', '.btn-remove-filter', function(e) {
 			e.preventDefault();
 			
@@ -168,9 +336,7 @@
 			});
 		}
 
-	   function refreshPlugins() {
-			window.lozad.observe();
-		}
+	 
 
 		function updateURL(cat, min, max, sort) {
 			let url = new URL(window.location.href);
@@ -252,5 +418,13 @@
 			minimumFractionDigits: 0
 		}).format(amount);
 	}
+
+	  function refreshPlugins() {
+			window.lozad.observe();
+		}
+
+
+
+	
 
 })(jQuery);

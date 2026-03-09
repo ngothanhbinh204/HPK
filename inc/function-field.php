@@ -140,3 +140,58 @@ function add_theme_config_options()
 	));
 }
 add_action('acf/init', 'add_theme_config_options');
+
+function add_field_product_list_settings()
+{
+	acf_add_local_field_group(array(
+		'key' => 'group_product_list_settings',
+		'title' => 'Cài Đặt Danh Sách Sản Phẩm (Loại Hình)',
+		'fields' => array(
+			array(
+				'key' => 'page_product_type',
+				'label' => 'Loại Hình Sản Phẩm Hiển Thị',
+				'name' => 'page_product_type',
+				'type' => 'taxonomy',
+				'instructions' => 'Chọn Loại Hình sản phẩm sẽ hiển thị trên trang này (Ví dụ: Cho Thuê hoặc Bán Máy).',
+				'taxonomy' => 'product_type',
+				'field_type' => 'multi_select',
+				'return_format' => 'id',
+				'add_term' => 0,
+				'load_terms' => 0,
+				'save_terms' => 0,
+			),
+			array(
+				'key' => 'page_product_type_empty',
+				'label' => 'Bao Gồm SP Chưa Gán Loại Hình',
+				'name' => 'page_product_type_empty',
+				'type' => 'true_false',
+				'instructions' => 'Nếu bật, danh sách sẽ hiển thị thêm các sản phẩm chưa được gán bất kỳ Loại Hình nào.',
+				'default_value' => 0,
+				'ui' => 1,
+			),
+		),
+		'location' => array(
+			array(
+				array(
+					'param' => 'page_template',
+					'operator' => '==',
+					'value' => 'templates/template-product-list.php',
+				),
+			),
+			array(
+				array(
+					'param' => 'page_template',
+					'operator' => '==',
+					'value' => 'templates/template-rent.php',
+				),
+			),
+		),
+		'menu_order' => 0,
+		'position' => 'side',
+		'style' => 'default',
+		'label_placement' => 'top',
+		'instruction_placement' => 'label',
+		'hide_on_screen' => '',
+	));
+}
+add_action('acf/init', 'add_field_product_list_settings');

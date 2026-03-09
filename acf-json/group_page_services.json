@@ -6,42 +6,122 @@
             "key": "field_service_tab_hero",
             "label": "1. Giới thiệu dịch vụ",
             "name": "",
+            "aria-label": "",
             "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_service_hero_title",
             "label": "Tiêu đề dịch vụ",
             "name": "service_hero_title",
+            "aria-label": "",
             "type": "text",
-            "default_value": "BÁN MÁY PHOTOCOPY CHÍNH HÃNG"
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "BÁN MÁY PHOTOCOPY CHÍNH HÃNG",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_service_hero_desc",
             "label": "Mô tả dịch vụ",
             "name": "service_hero_desc",
-            "type": "wysiwyg"
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "default_value": "",
+            "delay": 0
         },
         {
             "key": "field_service_hero_counters",
-            "label": "Chỉ số (Metrics/Counter)",
+            "label": "Chỉ số (Metrics\/Counter)",
             "name": "service_hero_counters",
+            "aria-label": "",
             "type": "repeater",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "layout": "table",
             "button_label": "Thêm chỉ số",
+            "min": 0,
+            "max": 0,
+            "rows_per_page": 20,
+            "collapsed": "",
             "sub_fields": [
                 {
                     "key": "field_metric_num",
                     "label": "Số (vd: 150+)",
                     "name": "number",
-                    "type": "text"
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_service_hero_counters"
                 },
                 {
                     "key": "field_metric_desc",
                     "label": "Mô tả",
                     "name": "description",
-                    "type": "text"
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_service_hero_counters"
                 }
             ]
         },
@@ -49,62 +129,185 @@
             "key": "field_service_hero_btn_left",
             "label": "Nút bấm trái (Gửi liên hệ)",
             "name": "service_hero_btn_left",
-            "type": "link"
+            "aria-label": "",
+            "type": "link",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
         },
         {
             "key": "field_service_hero_btn_right",
             "label": "Nút bấm phải (Xem dòng máy)",
             "name": "service_hero_btn_right",
-            "type": "link"
+            "aria-label": "",
+            "type": "link",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
         },
         {
             "key": "field_service_hero_image",
             "label": "Ảnh minh họa bên phải",
             "name": "service_hero_image",
+            "aria-label": "",
             "type": "image",
-            "return_format": "array"
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": 0,
+            "min_height": 0,
+            "min_size": 0,
+            "max_width": 0,
+            "max_height": 0,
+            "max_size": 0,
+            "mime_types": ""
         },
         {
             "key": "field_service_tab_commit",
             "label": "2. Cam kết",
             "name": "",
+            "aria-label": "",
             "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_home_6_title_service",
             "label": "Tiêu đề section",
             "name": "home_6_title",
+            "aria-label": "",
             "type": "text",
-            "default_value": "Cam kết chất lượng"
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Cam kết chất lượng",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_home_6_items_service",
             "label": "Danh sách cam kết",
             "name": "home_6_items",
+            "aria-label": "",
             "type": "repeater",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "layout": "block",
+            "min": 0,
+            "max": 0,
+            "rows_per_page": 20,
+            "button_label": "Add Row",
+            "collapsed": "",
             "sub_fields": [
                 {
                     "key": "field_commit_icon_service",
                     "label": "Icon",
                     "name": "icon",
+                    "aria-label": "",
                     "type": "image",
-                    "return_format": "array"
+                    "instructions": "",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "preview_size": "medium",
+                    "library": "all",
+                    "min_width": 0,
+                    "min_height": 0,
+                    "min_size": 0,
+                    "max_width": 0,
+                    "max_height": 0,
+                    "max_size": 0,
+                    "mime_types": "",
+                    "parent_repeater": "field_home_6_items_service"
                 },
                 {
                     "key": "field_commit_title_service",
                     "label": "Tiêu đề",
                     "name": "title",
-                    "type": "text"
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_home_6_items_service"
                 },
                 {
                     "key": "field_commit_desc_service",
                     "label": "Mô tả",
                     "name": "description",
+                    "aria-label": "",
                     "type": "textarea",
-                    "rows": 2
+                    "instructions": "",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "rows": 2,
+                    "default_value": "",
+                    "new_lines": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "parent_repeater": "field_home_6_items_service"
                 }
             ]
         },
@@ -112,60 +315,183 @@
             "key": "field_service_tab_sale",
             "label": "3. Sản phẩm liên quan",
             "name": "",
+            "aria-label": "",
             "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_home_sale_title_service",
             "label": "Tiêu đề section",
             "name": "home_sale_title",
+            "aria-label": "",
             "type": "text",
-            "default_value": "SẢN PHẨM ĐANG GIẢM GIÁ"
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "SẢN PHẨM ĐANG GIẢM GIÁ",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_home_sale_cats_service",
             "label": "Chọn danh mục sản phẩm",
             "name": "home_sale_cats",
+            "aria-label": "",
             "type": "taxonomy",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "taxonomy": "product_cat",
             "field_type": "multi_select",
-            "return_format": "object"
+            "return_format": "object",
+            "multiple": 0,
+            "allow_null": 0,
+            "add_term": 1,
+            "load_terms": 0,
+            "save_terms": 0,
+            "bidirectional_target": []
+        },
+        {
+            "key": "field_69a7ffcd0598a",
+            "label": "Xem Shop (Services Page)",
+            "name": "view_shop",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "allow_in_bindings": 0
         },
         {
             "key": "field_service_tab_contact",
             "label": "4. Form tư vấn",
             "name": "",
+            "aria-label": "",
             "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_home_contact_title_service",
             "label": "Tiêu đề form",
             "name": "home_contact_title",
+            "aria-label": "",
             "type": "text",
-            "default_value": "LIÊN HỆ TƯ VẤN"
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "LIÊN HỆ TƯ VẤN",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_home_contact_desc_service",
             "label": "Mô tả ngắn",
             "name": "home_contact_desc",
+            "aria-label": "",
             "type": "textarea",
-            "rows": 2
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "rows": 2,
+            "default_value": "",
+            "new_lines": "",
+            "maxlength": "",
+            "placeholder": ""
         },
         {
             "key": "field_home_contact_form_service",
             "label": "Shortcode Form (CF7)",
             "name": "home_contact_form_shortcode",
-            "type": "text"
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_home_contact_image_service",
             "label": "Ảnh minh họa",
             "name": "home_contact_image",
+            "aria-label": "",
             "type": "image",
-            "return_format": "array"
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": 0,
+            "min_height": 0,
+            "min_size": 0,
+            "max_width": 0,
+            "max_height": 0,
+            "max_size": 0,
+            "mime_types": ""
         }
     ],
     "location": [
@@ -173,7 +499,7 @@
             {
                 "param": "page_template",
                 "operator": "==",
-                "value": "templates/template-services.php"
+                "value": "templates\/template-services.php"
             }
         ]
     ],
@@ -182,6 +508,9 @@
     "style": "default",
     "label_placement": "top",
     "instruction_placement": "label",
+    "hide_on_screen": "",
     "active": true,
-    "description": "Nội dung cho trang Listing Dịch vụ (hoặc Chi tiết dịch vụ tĩnh)"
+    "description": "Nội dung cho trang Listing Dịch vụ (hoặc Chi tiết dịch vụ tĩnh)",
+    "show_in_rest": 0,
+    "modified": 1772617844
 }

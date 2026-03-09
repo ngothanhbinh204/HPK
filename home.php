@@ -1,11 +1,9 @@
 <?php
 /**
- * The archive template file
+ * The template for displaying the blog posts index (Trang Tin tức / Posts Page)
  */
 
 get_header();
-
-/* ── MAPPING NewsList.html → archive.php ── */
 
 // 1. Banner
 get_template_part('template-parts/section/global/banner-archive');
@@ -16,13 +14,14 @@ get_template_part('template-parts/section/global/breadcrumb');
 
 <section class="news">
 	<div class="container">
-		<h1 class="rem:text-[36px] font-bold uppercase mb-8 text-left"><?php single_cat_title(); ?></h1>
+		<h1 class="rem:text-[36px] font-bold uppercase mb-8 text-left"><?php single_post_title(); ?></h1>
 		
 		<ul class="nav-primary">
 			<?php
 			$posts_page_id = get_option( 'page_for_posts' );
 			$all_news_url = $posts_page_id ? get_permalink( $posts_page_id ) : home_url('/tin-tuc/');
-			$is_all_active = (!is_category() && !is_tax() && !is_tag()) ? 'active' : '';
+			// Vì home.php là chuyên trang bài viết nên tab "Tất cả" luôn active
+			$is_all_active = 'active';
 			?>
 			<li class="<?php echo $is_all_active; ?>">
 				<a href="<?php echo esc_url($all_news_url); ?>"><?php _e('Tất cả', 'canhcamtheme'); ?></a>

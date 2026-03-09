@@ -42,7 +42,7 @@ if ( is_tax('product_cat') ) {
 	$term_by_slug = get_term_by('slug', $url_cat, 'product_cat');
 	if ( $term_by_slug ) $active_cat_id = $term_by_slug->term_id;
 }
-
+$is_ajax_filter = true;
 $ajax_class = (isset($is_ajax_filter) && $is_ajax_filter) ? 'ajax-filter-enabled' : '';
 ?>
 <section class="product-list <?php echo $ajax_class; ?>" id="product-list-section" data-ajax-filter="<?php echo (isset($is_ajax_filter) && $is_ajax_filter) ? 'true' : 'false'; ?>">
@@ -115,8 +115,8 @@ $ajax_class = (isset($is_ajax_filter) && $is_ajax_filter) ? 'ajax-filter-enabled
 						}
 						?>
 					</h1>
-					<button class="btn btn-primary btn-remove-filter ml-auto">
-						<i class="fa-light fa-filter"></i>
+					<button class="btn btn-primary btn-remove-filter lg:ml-auto">
+						<i class="fa-light fa-filter-slash"></i>
 						<?php _e('Hủy Lọc', 'canhcamtheme'); ?>
 					</button>
 					<div class="sort-block">
@@ -163,15 +163,54 @@ $ajax_class = (isset($is_ajax_filter) && $is_ajax_filter) ? 'ajax-filter-enabled
 							'meta_query'     => $meta_query
 						);
 
-						// Handle Category Filter from URL
+						// ──  ACF: Lấy cấu hình Loại hình sản phẩm hiển thị của Trang hiện tại ──
+						$current_page_id = get_queried_object_id();
+						$selected_product_types = get_field('page_product_type', $current_page_id);
+						$include_empty          = get_field('page_product_type_empty', $current_page_id);
+						
+						$tax_query = array();
+
+						// Filter by URL Product Category if any
 						if ( $url_cat ) {
-							$args['tax_query'] = array(
-								array(
-									'taxonomy' => 'product_cat',
-									'field'    => 'slug',
-									'terms'    => $url_cat
-								)
+							$tax_query[] = array(
+								'taxonomy' => 'product_cat',
+								'field'    => 'slug',
+								'terms'    => $url_cat
 							);
+						}
+
+						// Filter by Product Type via ACF configuration
+						if ( !empty($selected_product_types) ) {
+							if ( $include_empty ) {
+								// Include specific terms OR products that have NO product_type term
+								$tax_query[] = array(
+									'relation' => 'OR',
+									array(
+										'taxonomy' => 'product_type',
+										'field'    => 'term_id',
+										'terms'    => $selected_product_types,
+										'operator' => 'IN'
+									),
+									array(
+										'taxonomy' => 'product_type',
+										'operator' => 'NOT EXISTS' // Lấy cả những SP chưa được gắn Loại hình
+									)
+								);
+							} else {
+								// Only display products with strictly matching term_ids
+								$tax_query[] = array(
+									'taxonomy' => 'product_type',
+									'field'    => 'term_id',
+									'terms'    => $selected_product_types,
+									'operator' => 'IN'
+								);
+							}
+						}
+
+						// Apply taxonomy queries if not empty
+						if ( !empty($tax_query) ) {
+							$tax_query['relation'] = 'AND';
+							$args['tax_query'] = $tax_query;
 						}
 						
 						// Sort logic

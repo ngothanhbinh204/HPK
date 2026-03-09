@@ -10,29 +10,22 @@ $home_counter_bg = get_field('home_counter_bg');
 	<div class="container">
 		<div class="wrapper">
 			<?php if ( $home_counter ) : ?>
-				<?php foreach ( $home_counter as $item ) : ?>
-					<div class="item">
-						<div class="number" data-count="<?php echo esc_attr(preg_replace('/[^0-9]/', '', $item['number'])); ?>"><?php echo esc_html($item['number']); ?></div>
-						<div class="desc"><?php echo esc_html($item['description']); ?></div>
+				<?php foreach ( $home_counter as $index => $item ) : ?>
+					<div class="item" 
+						data-aos="flip-down" 
+						data-aos-delay="<?php echo esc_attr($index * 200); ?>">
+						
+						<div class="number" 
+							data-count="<?php echo esc_attr(preg_replace('/[^0-9]/', '', $item['number'])); ?>">
+							<?php echo esc_html($item['number']); ?>
+						</div>
+
+						<div class="desc">
+							<?php echo esc_html($item['description']); ?>
+						</div>
+
 					</div>
 				<?php endforeach; ?>
-			<?php else : ?>
-				<div class="item">
-					<div class="number" data-count="5">5+</div>
-					<div class="desc">Năm kinh nghiệm</div>
-				</div>
-				<div class="item">
-					<div class="number" data-count="40">40+</div>
-					<div class="desc">Kỹ thuật viên</div>
-				</div>
-				<div class="item">
-					<div class="number" data-count="150">150+</div>
-					<div class="desc">Dòng máy khác nhau</div>
-				</div>
-				<div class="item">
-					<div class="number" data-count="3000">3000+</div>
-					<div class="desc">Khách hàng</div>
-				</div>
 			<?php endif; ?>
 		</div>
 	</div>

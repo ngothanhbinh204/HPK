@@ -1,7 +1,7 @@
 <?php
 /* ── Section 6: Cam kết chất lượng (Reusable) ── */
-$home_6_title = get_field('home_6_title') ?: 'Cam kết chất lượng';
-$home_6_items = get_field('home_6_items'); // Repeater
+$home_6_title = get_field('home_6_title', 'option') ?: 'Cam kết chất lượng';
+$home_6_items = get_field('home_6_items', 'option'); // Repeater
 ?>
 <section class="home-6">
 	<div class="bg-pattern"><img src="<?php echo get_template_directory_uri(); ?>/img/bg_partent_2.svg" alt="Pattern"></div>

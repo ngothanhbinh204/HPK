@@ -87,8 +87,6 @@ theme-name/
 │   ├── images/
 Yêu cầu:
 
-CSS / JS / fonts phải được load từ thư mục UI
-
 Không hardcode đường dẫn
 
 Tách logic khỏi template
@@ -287,7 +285,7 @@ Danh sách file cần tạo
 
 Code theo từng file (không gộp)
 
-ACF JSON hoặc PHP register field group
+ACF JSON field group
 
 Ví dụ render template 1 section hoàn chỉnh
 

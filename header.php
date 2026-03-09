@@ -92,7 +92,7 @@
 					<div class="header-language">
 						<ul class="language-horizontal">
 							<?php
-							$languages = icl_get_languages( 'skip_missing=0&orderby=KEY&order=DIR&link_empty_to=str' );
+							$languages = icl_get_languages( 'skip_missing=1&orderby=KEY&order=DIR' );
 							if ( ! empty( $languages ) ) :
 								$lang_keys = array_keys( $languages );
 								foreach ( $lang_keys as $idx => $lang_code ) :
@@ -187,7 +187,7 @@
 				<?php if ( function_exists('icl_get_languages') ) : ?>
 					<ul class="language-horizontal">
 						<?php
-						$languages = icl_get_languages( 'skip_missing=0&orderby=KEY&order=DIR&link_empty_to=str' );
+						$languages = icl_get_languages( 'skip_missing=1&orderby=KEY&order=DIR' );
 						if ( ! empty( $languages ) ) :
 							$lang_keys = array_keys( $languages );
 							foreach ( $lang_keys as $idx => $lang_code ) :
@@ -229,17 +229,11 @@
 	</div>
 	<div class="container">
 		<div class="wrap-form-search-product">
-			<div class="productsearchbox">
-				<?php
-				/* Dùng search form mặc định WordPress
-				 * Có thể thay bằng get_search_form() nếu muốn custom template
-				 */
-				?>
-				<input type="text" id="header-search-input" placeholder="<?php esc_attr_e( 'Tìm kiếm thông tin', 'canhcamtheme' ); ?>">
-				<button type="button" aria-label="<?php esc_attr_e( 'Tìm kiếm', 'canhcamtheme' ); ?>">
-					<i class="fa-light fa-magnifying-glass"></i>
-				</button>
-			</div>
+			<form role="search" method="get" class="productsearchbox search-form" action="<?php echo home_url( '/' ); ?>">
+				<input type="text" placeholder="<?php echo esc_attr_x( 'Tìm kiếm thông tin', 'placeholder' ) ?>"
+					value="<?php echo get_search_query() ?>" name="s" />
+				<button type="submit"><i class="fa-light fa-magnifying-glass"></i></button>
+			</form>
 		</div>
 	</div>
 </div>
