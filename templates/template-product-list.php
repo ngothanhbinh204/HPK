@@ -8,7 +8,7 @@ get_header();
 /* ── MAPPING ProductList.html → template-product-list.php ── */
 
 // 1. Banner
-get_template_part('template-parts/section/global/banner-archive');
+get_template_part('modules/common/banner');
 
 // 2. Breadcrumb
 get_template_part('template-parts/section/global/breadcrumb');

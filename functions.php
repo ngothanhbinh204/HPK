@@ -59,14 +59,53 @@ function canhcam_load_more_products() {
 		)
 	);
 
+	// ──  ACF: Lấy cấu hình Loại hình sản phẩm hiển thị của Trang hiện tại ──
+	$page_id = isset($_POST['page_id']) ? intval($_POST['page_id']) : 0;
+	$selected_product_types = $page_id ? get_field('page_product_type', $page_id) : false;
+	$include_empty          = $page_id ? get_field('page_product_type_empty', $page_id) : false;
+	
+	$tax_query = array();
+
 	if ( $product_cat ) {
-		$args['tax_query'] = array(
-			array(
-				'taxonomy' => 'product_cat',
-				'field'    => 'slug',
-				'terms'    => $product_cat
-			)
+		$tax_query[] = array(
+			'taxonomy' => 'product_cat',
+			'field'    => 'slug',
+			'terms'    => $product_cat
 		);
+	}
+
+	// Filter by Product Type via ACF configuration
+	if ( !empty($selected_product_types) ) {
+		if ( $include_empty ) {
+			// Include specific terms OR products that have NO product_type term
+			$tax_query[] = array(
+				'relation' => 'OR',
+				array(
+					'taxonomy' => 'product_type',
+					'field'    => 'term_id',
+					'terms'    => $selected_product_types,
+					'operator' => 'IN'
+				),
+				array(
+					'taxonomy' => 'product_type',
+					'operator' => 'NOT EXISTS' // Lấy cả những SP chưa được gắn Loại hình
+				)
+			);
+		} else {
+			// Only display products with strictly matching term_ids
+			$tax_query[] = array(
+				'taxonomy' => 'product_type',
+				'field'    => 'term_id',
+				'terms'    => $selected_product_types,
+				'operator' => 'IN'
+			);
+		}
+	}
+
+	// Apply taxonomy queries if not empty
+	if ( !empty($tax_query) ) {
+		$tax_query['relation'] = 'AND';
+		$args['tax_query'] = $tax_query;
 	}
 
 	// Sort logic
