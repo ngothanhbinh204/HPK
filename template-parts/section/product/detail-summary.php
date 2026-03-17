@@ -6,8 +6,14 @@ $sku = get_field('product_sku');
 $price = get_field('product_price');
 $price_old = get_field('product_price_old');
 $is_bestseller = get_field('product_is_bestseller');
-$discount_tag = get_field('product_discount_tag');
+$discount_tag = '';
 
+$price = (float) $price;
+$price_old = (float) $price_old;
+
+if ( $price && $price_old && $price_old > $price ) {
+	$discount_tag = '-' . round( ( $price_old - $price ) / $price_old * 100 ) . '%';
+}
 $configs = get_field('product_configs'); // Repeater (icon_class, label)
 $promotions = get_field('product_promotions'); // Repeater (text)
 $summary_specs = get_field('product_summary_specs'); // Repeater (label, value)

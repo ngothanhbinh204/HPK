@@ -11,7 +11,7 @@ $rent_partners = get_field('rent_partners'); // Gallery
 		<div class="partner-grid">
 			<?php if ( $rent_partners ) : ?>
 				<?php foreach ( $rent_partners as $idx => $partner ) : ?>
-					<?php $hide_class = ($idx >= 8) ? 'hidden-item d-none' : ''; ?>
+					<?php $hide_class = ($idx >= 18) ? 'hidden-item d-none' : ''; ?>
 					<div class="item-col <?php echo $hide_class; ?>">
 						<div class="partner-item">
 							<div class="partner-logo">

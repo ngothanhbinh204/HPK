@@ -10,23 +10,18 @@ if ( is_category() || is_tax() || is_tag() ) {
 
 $banner_url = '';
 
-// 1. Thử lấy banner cục bộ được gán cho trang hiện tại/danh mục hiện tại trước
 $local_banners = get_field('banner_select_page', $id);
 if ( $local_banners ) {
-    // Lấy banner đầu tiên trong danh sách chọn (đối tượng WP_Post)
     $banner_post = is_array($local_banners) ? $local_banners[0] : $local_banners;
     $banner_url = get_the_post_thumbnail_url($banner_post->ID, 'full');
 }
 
-// 2. Nếu không có banner cục bộ, thử lấy banner chung từ Options (Archive Banner)
 if ( !$banner_url ) {
     $archive_banner_global = get_field('archive_product_banner', 'options');
     if ( $archive_banner_global ) {
         $banner_url = is_array($archive_banner_global) ? $archive_banner_global['url'] : $archive_banner_global;
     }
 }
-
-// 3. Fallback mặc định
 if ( !$banner_url ) {
     $banner_url = get_template_directory_uri() . '/img/1.jpg';
 }

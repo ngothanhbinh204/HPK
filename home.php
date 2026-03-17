@@ -6,7 +6,7 @@
 get_header();
 
 // 1. Banner
-get_template_part('template-parts/section/global/banner-archive');
+get_template_part('modules/common/banner');
 
 // 2. Breadcrumb
 get_template_part('template-parts/section/global/breadcrumb');

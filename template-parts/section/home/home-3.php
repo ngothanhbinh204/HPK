@@ -17,7 +17,7 @@ $home_counter_bg = get_field('home_counter_bg');
 						
 						<div class="number" 
 							data-count="<?php echo esc_attr(preg_replace('/[^0-9]/', '', $item['number'])); ?>">
-							<?php echo esc_html($item['number']); ?>
+							<?php echo $item['number'] < 10 ? sprintf('%02d', $item['number']) : esc_html($item['number']); ?>
 						</div>
 
 						<div class="desc">

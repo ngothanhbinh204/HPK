@@ -3,7 +3,14 @@
 $product_id = get_the_ID();
 $price_current = get_field('product_price', $product_id);
 $price_old = get_field('product_price_old', $product_id);
-$discount_tag = get_field('product_discount_tag', $product_id);
+$discount_tag = '';
+
+$price = (float) $price_current;
+$price_old = (float) $price_old;
+
+if ( $price && $price_old && $price_old > $price ) {
+	$discount_tag = '-' . round( ( $price_old - $price ) / $price_old * 100 ) . '%';
+}
 $bestseller_tag = get_field('product_is_bestseller', $product_id);
 $specs = get_field('product_summary_specs', $product_id); // Repeater: icon + info
 ?>

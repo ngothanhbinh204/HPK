@@ -165,7 +165,7 @@ $ajax_class = (isset($is_ajax_filter) && $is_ajax_filter) ? 'ajax-filter-enabled
 						$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 						$args = array(
 							'post_type'      => 'product',
-							'posts_per_page' => 12,
+							'posts_per_page' => PerpageProduct,
 							'paged'          => $paged,
 							'meta_query'     => $meta_query
 						);
@@ -265,7 +265,7 @@ $ajax_class = (isset($is_ajax_filter) && $is_ajax_filter) ? 'ajax-filter-enabled
 						// Load More Button instead of pagination
 						if ( isset($max_pages) && $max_pages > 1 ) :
 						?>
-						<div class="load-more-container text-center mt-8">
+						<div class="load-more-container text-center mt-8 flex justify-center gap-4">
 							<button id="load-more-products" 
 									data-current-page="1" 
 									data-max-pages="<?php echo $max_pages; ?>"
@@ -273,9 +273,13 @@ $ajax_class = (isset($is_ajax_filter) && $is_ajax_filter) ? 'ajax-filter-enabled
 									data-product-cat="<?php echo esc_attr($url_cat); ?>"
 									data-min-price="<?php echo $min_price; ?>"
 									data-max-price="<?php echo $max_price; ?>"
-									class="btn-load-more">
+									class="btn btn-primary btn-load-more">
 								<?php _e('Xem thêm', 'canhcamtheme'); ?>
-								<i class="fa-light fa-arrow-rotate-right"></i>
+								<i class="fa-light fa-chevron-down"></i>
+							</button>
+							<button id="show-less-products" class="btn btn-primary btn-show-less" style="display: none;">
+								<?php _e('Thu gọn', 'canhcamtheme'); ?>
+								<i class="fa-light fa-chevron-up"></i>
 							</button>
 						</div>
 						<?php endif;

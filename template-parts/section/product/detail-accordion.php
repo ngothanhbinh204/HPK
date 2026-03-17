@@ -26,7 +26,7 @@ $accordions = get_field('product_accordions'); // Repeater (title, content_left,
 								</div>
 								<?php if ( !empty($acc['more_content']) ) : ?>
 									<div class="more-content" style="display: none;">
-										<div class="inner mt-10">
+										<div class="mt-10">
 											<?php echo $acc['more_content']; ?>
 										</div>
 									</div>

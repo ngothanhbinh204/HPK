@@ -229,6 +229,15 @@
 			applyFilters(page + 1, true);
 		});
 
+		// 4.1 Show Less
+		$(document).on('click', '#show-less-products', function(e) {
+			e.preventDefault();
+			applyFilters(1, false);
+			$('html, body').animate({
+				scrollTop: container.offset().top - 250
+			}, 500);
+		});
+
 		// 5. Remove Filter
 		// mặc đinh "btn-remove-filter" hidden
 		$('.btn-remove-filter').hide();
@@ -303,12 +312,15 @@
 							container.append(response);
 							loadMoreBtn.data('current-page', page);
 							
+							// Show Show Less button
+							$('#show-less-products').show();
+
 							const maxPages = parseInt(loadMoreBtn.data('max-pages'));
 							if (page >= maxPages) {
-								loadMoreBtn.parent().fadeOut();
+								loadMoreBtn.hide();
 							}
 						} else {
-							loadMoreBtn.parent().fadeOut();
+							loadMoreBtn.hide();
 						}
 					} else {
 						container.html(response);
@@ -319,10 +331,13 @@
 						loadMoreBtn.data('max-pages', newMaxPages);
 						
 						if (newMaxPages <= 1) {
-							loadMoreBtn.parent().hide();
+							loadMoreBtn.hide();
 						} else {
-							loadMoreBtn.parent().show();
+							loadMoreBtn.show();
 						}
+
+						// Hide Show Less button
+						$('#show-less-products').hide();
 						
 						// Update URL (Optional but good)
 						updateURL(productCat, minPrice, maxPrice, orderby);

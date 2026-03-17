@@ -1,8 +1,9 @@
-﻿<?php
+<?php
 /**
  * Theme functions and definitions
  */
 define('GENERATE_VERSION', '1.1.0');
+define('PerpageProduct', '12');
 
 require get_template_directory() . '/inc/function-setup.php';
 require get_template_directory() . '/inc/function-field.php';
@@ -11,6 +12,23 @@ require get_template_directory() . '/inc/function-pagination.php';
 require get_template_directory() . '/inc/function-walker-menu.php';
 require get_template_directory() . '/inc/function-custom.php';
 require get_template_directory() . '/inc/function-root.php';
+
+/**
+ * Redirect product archive to Bán Máy Page
+ */
+add_action('template_redirect', function() {
+    if ( is_post_type_archive('product') ) {
+        $page_id = get_page_id_by_template('templates/template-product-list.php');
+        if ( $page_id ) {
+            wp_redirect(get_permalink($page_id), 301);
+            exit;
+        } else {
+            // Fallback hardcode nếu không tìm thấy page template
+            wp_redirect(home_url('/ban-may/'), 301);
+            exit;
+        }
+    }
+});
 
 /**
  * Filter products by range price on archive
@@ -46,7 +64,7 @@ function canhcam_load_more_products() {
 
 	$args = array(
 		'post_type'      => $post_type,
-		'posts_per_page' => 12,
+		'posts_per_page' => PerpageProduct,
 		'paged'          => $paged,
 		'post_status'    => 'publish',
 		'meta_query'     => array(
@@ -239,7 +257,7 @@ function filter_products_by_category_handler() {
 	
 	$args = array(
 		'post_type'      => 'product',
-		'posts_per_page' => 12,
+		'posts_per_page' => PerpageProduct,
 		'post_status'    => 'publish',
 	);
 
