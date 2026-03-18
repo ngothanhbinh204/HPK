@@ -38,10 +38,10 @@ $specs = get_field('product_summary_specs', $product_id); // Repeater: icon + in
 		</div>
 		<div class="price">
 			<?php if ( $price_current ) : ?>
-				<span class="current"><?php echo number_format($price_current, 0, ',', '.'); ?>đ</span>
+				<span class="current"><?php echo number_format($price_current, 0, '.', ','); ?><span class="unit">₫</span></span>
 			<?php endif; ?>
 			<?php if ( $price_old ) : ?>
-				<span class="old"><?php echo number_format($price_old, 0, ',', '.'); ?>đ</span>
+				<span class="old"><?php echo number_format($price_old, 0, '.', ','); ?><span class="unit">₫</span></span>
 			<?php endif; ?>
 		</div>
 		<?php if ( $specs ) : ?>

@@ -47,6 +47,7 @@ $ajax_class = (isset($is_ajax_filter) && $is_ajax_filter) ? 'ajax-filter-enabled
 ?>
 <section class="product-list <?php echo $ajax_class; ?>" id="product-list-section" 
 	data-ajax-filter="<?php echo (isset($is_ajax_filter) && $is_ajax_filter) ? 'true' : 'false'; ?>"
+	data-is-load-more="<?php echo (isset($is_load_more) && $is_load_more) ? 'true' : 'false'; ?>"
 	data-page-id="<?php echo get_queried_object_id(); ?>">
 	<div class="container-full">
 		<div class="wrapper">
@@ -111,7 +112,7 @@ $ajax_class = (isset($is_ajax_filter) && $is_ajax_filter) ? 'ajax-filter-enabled
 					<h1 class="title" id="archive-title" 
 						data-default-title="<?php echo isset($product_title) ? esc_attr($product_title) : __('Sản phẩm', 'canhcamtheme'); ?>"
 						data-prefix="<?php echo $custom_prefix ? esc_attr($custom_prefix) . ' ' : ((isset($is_included_in_page) && $is_included_in_page) ? '' : ''); ?>">
-						<?php 
+						<span class="text"><?php 
 						if ( is_tax() ) {
 							echo $prefix . single_term_title('', false);
 						} elseif ( $active_cat_id ) {
@@ -120,7 +121,10 @@ $ajax_class = (isset($is_ajax_filter) && $is_ajax_filter) ? 'ajax-filter-enabled
 						} else {
 							echo isset($product_title) ? esc_html($product_title) : __('Sản phẩm', 'canhcamtheme');
 						}
-						?>
+						?></span>
+						<span id="product-count" class="rem:text-base font-normal lowercase ml-2">
+							(<?php echo $GLOBALS['wp_query']->found_posts; ?> <?php _e('sản phẩm', 'canhcamtheme'); ?>)
+						</span>
 					</h1>
 					<button class="btn btn-primary btn-remove-filter lg:ml-auto">
 						<i class="fa-light fa-filter-slash"></i>
@@ -259,7 +263,7 @@ $ajax_class = (isset($is_ajax_filter) && $is_ajax_filter) ? 'ajax-filter-enabled
 					}
 					?>
 				</div>
-				<div class="pagination-wrapper">
+				<div class="pagination-wrapper" id="product-pagination-container">
 					<?php
 					if ( isset($is_load_more) && $is_load_more ) {
 						// Load More Button instead of pagination
@@ -283,14 +287,28 @@ $ajax_class = (isset($is_ajax_filter) && $is_ajax_filter) ? 'ajax-filter-enabled
 							</button>
 						</div>
 						<?php endif;
-					} elseif ( $is_product_page_template && !is_tax() ) {
-						echo paginate_links( array(
-							'total' => $temp_query->max_num_pages,
+					} elseif ( isset($is_product_page_template) && $is_product_page_template && !is_tax() ) {
+						// Custom Pagination for Page Templates
+						$paginate_args = array(
+							'total'     => $temp_query->max_num_pages,
 							'prev_text' => '<i class="fa-light fa-chevron-left"></i>',
 							'next_text' => '<i class="fa-light fa-chevron-right"></i>',
 							'type'      => 'list',
-						) );
+						);
+
+						// Preserve URL parameters in pagination links
+						if ( isset($_GET['product_cat']) || isset($_GET['min_price']) || isset($_GET['max_price']) || isset($_GET['orderby']) ) {
+							$paginate_args['add_args'] = array(
+								'product_cat' => isset($_GET['product_cat']) ? $_GET['product_cat'] : '',
+								'min_price'   => isset($_GET['min_price']) ? $_GET['min_price'] : '',
+								'max_price'   => isset($_GET['max_price']) ? $_GET['max_price'] : '',
+								'orderby'     => isset($_GET['orderby']) ? $_GET['orderby'] : '',
+							);
+						}
+
+						echo paginate_links( $paginate_args );
 					} else {
+						// Standard Archive Pagination
 						the_posts_pagination( array(
 							'prev_text' => '<i class="fa-light fa-chevron-left"></i>',
 							'next_text' => '<i class="fa-light fa-chevron-right"></i>',

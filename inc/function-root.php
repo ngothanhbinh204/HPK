@@ -159,13 +159,37 @@ add_filter('nav_menu_css_class', 'special_nav_class', 10, 3);
 
 function special_nav_class($classes, $item, $args)
 {
-	if (in_array('current-menu-item', $classes)) {
+	if (in_array('current-menu-item', $classes) || in_array('current-page-ancestor', $classes)) {
 		if (isset($args->add_class_active)) {
 			$classes[] = $args->add_class_active;
 		}
 	}
 	return $classes;
 }
+
+/**
+ * Fix active menu cho Sản phẩm: Active 'Bán Máy' và Deactive 'Tin Tức'
+ */
+add_filter('nav_menu_css_class', function($classes, $item, $args) {
+    if (is_singular('product')) {
+        // 1. Xóa class active của Tin Tức (blog parent) khi ở trang sản phẩm
+        $blog_id = get_option('page_for_posts');
+        if ($item->object_id == $blog_id) {
+            $classes = array_diff($classes, array('current_page_parent', 'current-menu-item', 'active'));
+        }
+
+        // 2. Thêm class active cho trang Bán Máy
+        $ban_may_id = get_page_id_by_template('templates/template-product-list.php');
+        if ($item->object_id == $ban_may_id) {
+            $classes[] = 'current-menu-item';
+            // Đồng bộ với logic của theme (thêm class active tùy chỉnh nếu có)
+            if (isset($args->add_class_active)) {
+                $classes[] = $args->add_class_active;
+            }
+        }
+    }
+    return $classes;
+}, 20, 3);
 // Clone page or post
 /*
  * Function for post duplication. Dups appear as drafts. User is redirected to the edit screen

@@ -4,7 +4,7 @@
 $archive_banner = get_field('archive_product_banner', 'options');
 ?>
 <section class="page-banner-main">
-	<div class="img img-ratio pt-[calc(664/1920*100rem)]">
+	<div class="img img-ratio">
 		<?php if ( $archive_banner ) : ?>
 			<img class="lozad" data-src="<?php echo esc_url($archive_banner['url']); ?>" alt="<?php post_type_archive_title(); ?>" />
 		<?php else : ?>

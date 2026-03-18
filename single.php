@@ -75,8 +75,8 @@ while ( have_posts() ) :
 				</div>
 			</div>
 			<div class="swiper-nav-wrapper">
-				<div class="swiper-button-prev related-prev"><i class="fa-light fa-arrow-left"></i></div>
-				<div class="swiper-button-next related-next"><i class="fa-light fa-arrow-right"></i></div>
+				<div class="swiper-button-prev related-prev"><i class="fa-thin fa-chevron-left"></i></div>
+				<div class="swiper-button-next related-next"><i class="fa-thin fa-chevron-right"></i></div>
 			</div>
 		</div>
 	</div>

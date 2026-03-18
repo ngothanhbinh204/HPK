@@ -3,7 +3,7 @@
  * Theme functions and definitions
  */
 define('GENERATE_VERSION', '1.1.0');
-define('PerpageProduct', '12');
+define('PerpageProduct', 12);
 
 require get_template_directory() . '/inc/function-setup.php';
 require get_template_directory() . '/inc/function-field.php';
@@ -34,7 +34,11 @@ add_action('template_redirect', function() {
  * Filter products by range price on archive
  */
 add_action( 'pre_get_posts', function ( $query ) {
-    if ( ! is_admin() && $query->is_main_query() && ( is_post_type_archive( 'product' ) || is_tax( 'product_cat' ) ) ) {
+    if ( is_admin() || ! $query->is_main_query() ) {
+        return;
+    }
+
+    if ( $query->is_post_type_archive( 'product' ) || $query->is_tax( 'product_cat' ) || $query->is_tax( 'product_type' ) ) {
         $meta_query = array( 'relation' => 'AND' );
         if ( isset( $_GET['min_price'] ) && isset( $_GET['max_price'] ) ) {
             $meta_query[] = array(
@@ -44,7 +48,15 @@ add_action( 'pre_get_posts', function ( $query ) {
                 'compare' => 'BETWEEN',
             );
         }
-        $query->set( 'meta_query', $meta_query );
+        if ( count($meta_query) > 1 ) {
+            $query->set( 'meta_query', $meta_query );
+        }
+        $query->set( 'posts_per_page', PerpageProduct );
+    }
+
+    if ( $query->is_search() ) {
+        $query->set( 'post_type', array( 'post', 'product' ) );
+        $query->set( 'posts_per_page', PerpageProduct );
     }
 } );
 
@@ -67,20 +79,27 @@ function canhcam_load_more_products() {
 		'posts_per_page' => PerpageProduct,
 		'paged'          => $paged,
 		'post_status'    => 'publish',
-		'meta_query'     => array(
+	);
+
+	// Only apply Price Meta Query if user has filtered by price (not defaults)
+	// This ensures products without price keys are still shown by default.
+	if ( $min_price > 0 || $max_price < 500000000 ) {
+		$args['meta_query'] = array(
 			array(
 				'key'     => 'product_price',
 				'value'   => array($min_price, $max_price),
 				'type'    => 'NUMERIC',
 				'compare' => 'BETWEEN'
 			)
-		)
-	);
+		);
+	}
 
 	// ──  ACF: Lấy cấu hình Loại hình sản phẩm hiển thị của Trang hiện tại ──
 	$page_id = isset($_POST['page_id']) ? intval($_POST['page_id']) : 0;
-	$selected_product_types = $page_id ? get_field('page_product_type', $page_id) : false;
-	$include_empty          = $page_id ? get_field('page_product_type_empty', $page_id) : false;
+	// Chỉ lấy config nếu page_id thực sự là ID của một Page (để tránh lấy nhầm Post/Term có cùng ID)
+	$is_actual_page         = ( 'page' === get_post_type($page_id) );
+	$selected_product_types = $is_actual_page ? get_field('page_product_type', $page_id) : false;
+	$include_empty          = $is_actual_page ? get_field('page_product_type_empty', $page_id) : false;
 	
 	$tax_query = array();
 
@@ -143,25 +162,73 @@ function canhcam_load_more_products() {
 	$query = new WP_Query($args);
 	$max_pages = $query->max_num_pages;
 
-	if ( $query->have_posts() ) {
-		while ( $query->have_posts() ) { 
-			$query->the_post();
-			echo '<div class="product-column">';
-			get_template_part('template-parts/content', 'product');
-			echo '</div>';
-		}
-		
-		if($paged == 1) {
-			echo '<input type="hidden" id="data-ajax-max-pages" value="' . $max_pages . '">';
+	ob_start();
+	if ( $query->have_posts() ) :
+		while ( $query->have_posts() ) : $query->the_post(); ?>
+			<div class="product-column">
+				<?php get_template_part('template-parts/content', 'product'); ?>
+			</div>
+		<?php endwhile;
+	else :
+		if($paged == 1) : ?>
+			<p class="no-products"><?php _e('Không tìm thấy sản phẩm nào.', 'canhcamtheme'); ?></p>
+		<?php endif;
+	endif;
+	$html = ob_get_clean();
+
+	// Generation of the updated pagination components
+	$pagination = '';
+	$is_load_more_mode = isset($_POST['is_load_more']) && $_POST['is_load_more'] === 'true';
+
+	if ( $is_load_more_mode ) {
+		// Return Load More Button if there are more pages
+		if ( $max_pages > 1 ) {
+			ob_start(); ?>
+			<div class="load-more-container text-center mt-8 flex justify-center gap-4">
+				<button id="load-more-products" 
+						data-current-page="1" 
+						data-max-pages="<?php echo $max_pages; ?>"
+						data-post-type="<?php echo esc_attr($post_type); ?>"
+						data-product-cat="<?php echo esc_attr($product_cat); ?>"
+						data-min-price="<?php echo $min_price; ?>"
+						data-max-price="<?php echo $max_price; ?>"
+						class="btn btn-primary btn-load-more">
+					<?php _e('Xem thêm', 'canhcamtheme'); ?>
+					<i class="fa-light fa-chevron-down"></i>
+				</button>
+				<button id="show-less-products" class="btn btn-primary btn-show-less" style="display: none;">
+					<?php _e('Thu gọn', 'canhcamtheme'); ?>
+					<i class="fa-light fa-chevron-up"></i>
+				</button>
+			</div>
+			<?php 
+			$pagination = ob_get_clean();
 		}
 	} else {
-		if($paged == 1) {
-			echo '<p class="no-products">' . __('Không tìm thấy sản phẩm nào.', 'canhcamtheme') . '</p>';
-			echo '<input type="hidden" id="data-ajax-max-pages" value="0">';
-		}
+		// Return standard pagination links
+		$pagination = paginate_links( array(
+			'base'      => add_query_arg( 'page', '%#%' ),
+			'format'    => '',
+			'total'     => $max_pages,
+			'current'   => $paged,
+			'prev_text' => '<i class="fa-light fa-chevron-left"></i>',
+			'next_text' => '<i class="fa-light fa-chevron-right"></i>',
+			'type'      => 'list',
+			'add_args'  => array(
+				'product_cat' => $product_cat,
+				'min_price'   => $min_price,
+				'max_price'   => $max_price,
+				'orderby'     => $orderby_val,
+			)
+		) );
 	}
 
-	wp_reset_postdata();
+	wp_send_json_success(array(
+		'html'       => $html,
+		'pagination' => $pagination,
+		'max_pages'  => $max_pages,
+		'total'      => $query->found_posts,
+	));
 	die();
 }
 
@@ -308,9 +375,15 @@ function filter_products_by_category_handler() {
 	endif;
 
 	$html = ob_get_clean();
-	wp_send_json_success($html);
+	wp_send_json_success(array(
+		'html'  => $html,
+		'count' => $query->found_posts
+	));
 	die();
 }
+
+
+
 
 
 

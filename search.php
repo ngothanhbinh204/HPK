@@ -6,7 +6,7 @@
 get_header();
 
 // 1. Banner
-get_template_part('modules/common/banner');
+// get_template_part('modules/common/banner');
 
 // 2. Breadcrumb
 get_template_part('template-parts/section/global/breadcrumb');
@@ -101,7 +101,7 @@ $search_query = get_search_query();
 			</div>
 
 		<?php else : ?>
-			<div class="no-results text-center py-20">
+			<div class="no-results text-center">
 				<div class="rem:text-6xl text-Utility-gray-300 mb-6">
 					<i class="fa-light fa-magnifying-glass"></i>
 				</div>

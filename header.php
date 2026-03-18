@@ -231,7 +231,7 @@
 	<div class="container">
 		<div class="wrap-form-search-product">
 			<form role="search" method="get" class="productsearchbox search-form" action="<?php echo home_url( '/' ); ?>">
-				<input type="text" placeholder="<?php echo esc_attr_x( 'Tìm kiếm thông tin', 'placeholder' ) ?>"
+				<input type="text" placeholder="<?php echo _e('Tìm kiếm', 'canhcamtheme') ?>"
 					value="<?php echo get_search_query() ?>" name="s" />
 				<button type="submit"><i class="fa-light fa-magnifying-glass"></i></button>
 			</form>

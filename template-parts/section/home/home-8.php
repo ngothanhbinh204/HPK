@@ -85,8 +85,8 @@ $home_news_cats = get_field('home_news_cats'); // Taxonomy: category
 				</div>
 			</div>
 			<div class="swiper-nav-wrapper">
-				<div class="swiper-button-prev home-8-prev"><i class="fa-light fa-chevron-left"></i></div>
-				<div class="swiper-button-next home-8-next"><i class="fa-light fa-chevron-right"></i></div>
+				<div class="swiper-button-prev home-8-prev"><i class="fa-thin fa-chevron-left"></i></div>
+				<div class="swiper-button-next home-8-next"><i class="fa-thin fa-chevron-right"></i></div>
 			</div>
 		</div>
 		<div class="block-btn text-center" data-aos="fade-up" data-aos-delay="600">

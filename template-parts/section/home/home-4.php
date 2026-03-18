@@ -5,7 +5,7 @@ $sale_title = get_field('home_sale_title') ?: 'SẢN PHẨM ĐANG GIẢM GIÁ';
 $sale_cats = get_field('home_sale_cats'); // Taxonomy: product_cat
 $view_shop = get_field('view_shop');
 ?>
-<section class="home-4 section bg-Utility-gray-50 product-tabs-slider-section">
+<section class="home-4 section product-tabs-slider-section">
 	<div class="container-seller">
 		<div class="section-header">
 			<div class="title flex items-end justify-center gap-2">
@@ -27,7 +27,6 @@ $view_shop = get_field('view_shop');
 				</div>
 			<?php endif; ?>
 		</div>
-
 		<div class="relative" id="product-filter-result">
 			<div class="loading-overlay">
 				<div class="spinner"></div>
@@ -76,11 +75,11 @@ $view_shop = get_field('view_shop');
 				<div class="swiper-button-prev"><i class="fa-solid fa-chevron-left"></i></div>
 				<div class="swiper-button-next"><i class="fa-solid fa-chevron-right"></i></div>
 			</div>
-			<div class="block-btn text-center mt-10">
-				<?php if($view_shop) : ?>
-					<a class="btn btn-primary" href="<?php echo $view_shop['url']; ?>"><?php echo $view_shop['title']; ?></a>
-				<?php endif; ?>
-			</div>
+		</div>
+		<div class="block-btn text-center mt-10">
+			<?php if($view_shop) : ?>
+				<a class="btn btn-primary" href="<?php echo $view_shop['url']; ?>"><?php echo $view_shop['title']; ?></a>
+			<?php endif; ?>
 		</div>
 	</div>
 </section>

@@ -34,9 +34,9 @@
 						prevEl: ".home-4 .swiper-button-prev",
 					},
 					breakpoints: {
-						640: { slidesPerView: 2, spaceBetween: 20 },
-						768: { slidesPerView: 3, spaceBetween: 20 },
-						1024: { slidesPerView: 4, spaceBetween: 30 },
+						640: { slidesPerView: 2, spaceBetween: 12 },
+						768: { slidesPerView: 3, spaceBetween: 12 },
+						1024: { slidesPerView: 4, spaceBetween: 20 },
 					},
 					autoplay: {
 						delay: 5000,
@@ -78,7 +78,14 @@
 				},
 				success: function(response) {
 					if (response.success) {
-						swiperWrapper.html(response.data);
+						const data = response.data;
+						if (typeof data === 'object' && data.html) {
+							swiperWrapper.html(data.html);
+							console.log(`[DEBUG] Home Category Products Count: ${data.count}`);
+						} else {
+							swiperWrapper.html(data);
+						}
+						
 						initSwiper();
 						
 						// Re-init AOS & Lozad
@@ -202,7 +209,7 @@
 			$('#input-product-cat').val(slug);
 			const catName = $(this).text().trim();
 			const prefix = $('#archive-title').data('prefix') || '';
-			$('#archive-title').text(prefix + catName);
+			$('#archive-title .text').text(prefix + catName);
 
 			applyFilters(1);
 		});
@@ -264,7 +271,7 @@
 			// Reset Title
 			const archiveTitle = $('#archive-title');
 			const defaultTitle = archiveTitle.data('default-title');
-			archiveTitle.text(defaultTitle);
+			archiveTitle.find('.text').text(defaultTitle);
 
 			applyFilters(1);
 		});
@@ -304,43 +311,54 @@
 					min_price: minPrice,
 					max_price: maxPrice,
 					orderby: orderby,
-					page_id: pageId // Send page_id to server
+					page_id: pageId,
+					is_load_more: productList.data('is-load-more') === true ? 'true' : 'false'
 				},
 				success: function(response) {
-					if (append) {
-						if (response.trim()) {
-							container.append(response);
-							loadMoreBtn.data('current-page', page);
-							
-							// Show Show Less button
-							$('#show-less-products').show();
+					if (response.success) {
+						const data = response.data;
+						if (append) {
+							if (data.html.trim()) {
+								container.append(data.html);
+								loadMoreBtn.data('current-page', page);
+								$('#show-less-products').show();
 
-							const maxPages = parseInt(loadMoreBtn.data('max-pages'));
-							if (page >= maxPages) {
+								if (page >= parseInt(data.max_pages)) {
+									loadMoreBtn.hide();
+								}
+							} else {
 								loadMoreBtn.hide();
 							}
 						} else {
-							loadMoreBtn.hide();
-						}
-					} else {
-						container.html(response);
-						loadMoreBtn.data('current-page', 1);
-						
-						// Update Max Pages from hidden input in response
-						const newMaxPages = parseInt($('#data-ajax-max-pages').val()) || 1;
-						loadMoreBtn.data('max-pages', newMaxPages);
-						
-						if (newMaxPages <= 1) {
-							loadMoreBtn.hide();
-						} else {
-							loadMoreBtn.show();
+							container.html(data.html);
+							
+							// Update Pagination / Load More Button
+							if (data.pagination) {
+								$('#product-pagination-container').html(data.pagination);
+							} else {
+								$('#product-pagination-container').empty();
+							}
+
+							// Handle Load More Logic (Update button data if exists)
+							const updatedLoadMore = $('#load-more-products');
+							if (updatedLoadMore.length) {
+								loadMoreBtn.data('current-page', 1);
+								loadMoreBtn.data('max-pages', data.max_pages);
+							}
+
+							$('#show-less-products').hide();
+							updateURL(productCat, minPrice, maxPrice, orderby);
+
+							// Scroll to top of grid after filter
+							$('html, body').animate({
+								scrollTop: container.offset().top - 250
+							}, 500);
 						}
 
-						// Hide Show Less button
-						$('#show-less-products').hide();
-						
-						// Update URL (Optional but good)
-						updateURL(productCat, minPrice, maxPrice, orderby);
+						// Update Debug Count
+						const totalPosts = data.total || 0;
+						console.log(`[DEBUG] Filtered Products Count (Archive): ${totalPosts}`);
+						$('#product-count').text(`(${totalPosts} sản phẩm)`);
 					}
 
 					refreshPlugins();

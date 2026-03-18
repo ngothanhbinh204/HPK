@@ -101,34 +101,30 @@ if ( function_exists('get_field') ) {
 				<div class="footer-col company-info">
 					<h3 class="footer-title"><?php echo esc_html( $footer_company_name ); ?></h3>
 
-					<ul class="contact-list">
-						<?php if ( function_exists('have_rows') && have_rows( 'footer_contact_list', 'options' ) ) : ?>
-							<?php while ( have_rows( 'footer_contact_list', 'options' ) ) : the_row(); ?>
-								<?php
-								$contact_icon = get_sub_field('contact_icon'); // vd: fa-location-dot
-								$contact_link = get_sub_field('contact_link'); // array: title, url, target
-								if ( ! $contact_link ) continue;
+				<ul class="contact-list">
+					<?php if ( function_exists('have_rows') && have_rows( 'footer_contact_list', 'options' ) ) : ?>
+						<?php while ( have_rows( 'footer_contact_list', 'options' ) ) : the_row(); ?>
+							<?php
+							$contact_icon    = get_sub_field('contact_icon');
+							$contact_content = get_sub_field('contact_content');
 
-								$prefix = canhcam_get_fa_prefix( $contact_icon );
-								$icon_class = trim( $prefix . ' ' . $contact_icon );
-								?>
-								<li>
-									<?php if ( $contact_icon ) : ?>
-										<i class="<?php echo esc_attr( $icon_class ); ?>"></i>
-									<?php endif; ?>
-									<?php if ( ! empty( $contact_link['url'] ) ) : ?>
-										<a href="<?php echo esc_url( $contact_link['url'] ); ?>"
-										   <?php echo $contact_link['target'] ? 'target="' . esc_attr($contact_link['target']) . '"' : ''; ?>>
-											<span><?php echo esc_html( $contact_link['title'] ); ?></span>
-										</a>
-									<?php else : ?>
-										<span><?php echo esc_html( $contact_link['title'] ); ?></span>
-									<?php endif; ?>
-								</li>
-							<?php endwhile; ?>
-					
-						<?php endif; ?>
-					</ul>
+							if ( ! $contact_content ) continue;
+
+							$prefix = canhcam_get_fa_prefix( $contact_icon );
+							$icon_class = trim( $prefix . ' ' . $contact_icon );
+							?>
+							<li>
+								<?php if ( $contact_icon ) : ?>
+									<i class="<?php echo esc_attr( $icon_class ); ?>"></i>
+								<?php endif; ?>
+
+								<div class="contact-content">
+									<?php echo wp_kses_post( $contact_content ); ?>
+								</div>
+							</li>
+						<?php endwhile; ?>
+					<?php endif; ?>
+				</ul>
 
 					<?php /* Giấy phép / MST */ ?>
 					<?php if ( $footer_license_info ) : ?>
@@ -180,7 +176,11 @@ if ( function_exists('get_field') ) {
 						<div class="card-header">
 							<?php
 							$support_icon_prefix = canhcam_get_fa_prefix( $footer_support_icon );
-							$support_icon_full   = trim( $support_icon_prefix . ' ' . $footer_support_icon );
+							$support_icon_full = trim($footer_support_icon);
+
+							if (strpos($support_icon_full, 'fa-') !== false && strpos($support_icon_full, 'fa-regular') === false && strpos($support_icon_full, 'fa-solid') === false && strpos($support_icon_full, 'fa-brands') === false) {
+								$support_icon_full = 'fa-solid ' . $support_icon_full;
+							}
 							?>
 							<i class="<?php echo esc_attr( $support_icon_full ); ?>"></i>
 							<h3><?php echo esc_html( $footer_support_title ); ?></h3>

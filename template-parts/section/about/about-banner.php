@@ -3,7 +3,7 @@
 $page_banner = get_field('page_banner');
 ?>
 <section class="page-banner-main">
-	<div class="img img-ratio pt-[calc(664/1920*100rem)]">
+	<div class="img img-ratio ">
 		<?php if ( $page_banner ) : ?>
 			<img class="lozad" data-src="<?php echo esc_url($page_banner['url']); ?>" alt="<?php the_title(); ?>" />
 		<?php else : ?>

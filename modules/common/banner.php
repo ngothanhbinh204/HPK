@@ -28,7 +28,7 @@ if ( !$banner_url ) {
 ?>
 
 <section class="page-banner-main banner-2">
-    <div class="img img-ratio pt-[calc(664/1920*100rem)]">
+    <div class="img img-ratio">
         <img class="lozad" data-src="<?php echo esc_url($banner_url); ?>" alt="<?php echo is_archive() ? post_type_archive_title('', false) : get_the_title(); ?>" />
     </div>
 </section>
