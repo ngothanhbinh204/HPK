@@ -121,17 +121,6 @@ function add_theme_config_options()
 				'rows' => 4,
 				'new_lines' => '',
 			),
-			array(
-				'key' => 'field_archive_product_banner',
-				'label' => 'Banner mặc định (Archive)',
-				'name' => 'archive_product_banner',
-				'type' => 'image',
-				'instructions' => 'Banner hiển thị cho các trang lưu trữ nếu không có banner riêng.',
-				'required' => 0,
-				'return_format' => 'array',
-				'preview_size' => 'medium',
-				'library' => 'all',
-			),
 		),
 		'location' => array(
 			array(
@@ -179,14 +168,6 @@ function add_field_product_list_settings()
 				'instructions' => 'Nếu bật, danh sách sẽ hiển thị thêm các sản phẩm chưa được gán bất kỳ Loại Hình nào.',
 				'default_value' => 0,
 				'ui' => 1,
-			),
-			array(
-				'key' => 'page_product_prefix',
-				'label' => 'Tiền Tố Tiêu Đề Danh Mục',
-				'name' => 'page_product_prefix',
-				'type' => 'text',
-				'instructions' => 'Nhập tiền tố sẽ hiển thị trước tên danh mục (Ví dụ: "Cho Thuê"). Để trống nếu không muốn dùng tiền tố.',
-				'default_value' => '',
 			),
 		),
 		'location' => array(

@@ -299,7 +299,6 @@
 			const maxPrice = $('#input-max-price').val();
 			const productCat = $('#input-product-cat').val() || '';
 			const orderby = $('#input-orderby').val() || '';
-			const pageId = productList.data('page-id') || 0; // Read the page-id
 
 			// Toggle Clear Filter button
 			const hasFilter = (productCat !== '' || parseInt(minPrice) > 0 || parseInt(maxPrice) < 500000000 || orderby !== '');

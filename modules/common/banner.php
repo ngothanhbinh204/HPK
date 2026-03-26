@@ -1,9 +1,8 @@
 <?php
-$queried_object = get_queried_object();
-$id = '';
-
-if ( is_category() || is_tax() || is_tag() ) {
-	$id = $queried_object->taxonomy . '_' . $queried_object->term_id;
+$id_category = get_queried_object()->term_id;
+$taxonomy = get_queried_object()->taxonomy;
+if ($id_category) {
+	$id = $taxonomy . '_' . $id_category;
 } else {
 	$id = get_the_ID();
 }

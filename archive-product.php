@@ -11,7 +11,7 @@ if ( !isset($is_included_in_page) ) {
 
 if ( !isset($is_included_in_page) ) {
 	// 1. Banner (Lấy từ Options hoặc Taxonomy nếu cần)
-	get_template_part('modules/common/banner');
+	get_template_part('template-parts/section/global/banner-archive');
 
 	// 2. Breadcrumb
 	get_template_part('template-parts/section/global/breadcrumb');
@@ -128,12 +128,6 @@ $ajax_class = (isset($is_ajax_filter) && $is_ajax_filter) ? 'ajax-filter-enabled
 			</aside>
 			<main class="main-content">
 				<div class="content-header">
-					<?php 
-					// Lấy tiền tố từ tuỳ chọn ACF của trang hiện tại
-					$page_id = get_queried_object_id();
-					$custom_prefix = get_field('page_product_prefix', $page_id);
-					$prefix = $custom_prefix ? esc_html($custom_prefix) . ' ' : ((isset($is_included_in_page) && $is_included_in_page) ? __('Cho Thuê ', 'canhcamtheme') : '');
-					?>
 					<h1 class="title" id="archive-title" 
 						data-default-title="<?php echo isset($product_title) ? esc_attr($product_title) : __('Sản phẩm', 'canhcamtheme'); ?>"
 						data-prefix="<?php echo $custom_prefix ? esc_attr($custom_prefix) . ' ' : ((isset($is_included_in_page) && $is_included_in_page) ? '' : ''); ?>">
@@ -171,7 +165,7 @@ $ajax_class = (isset($is_ajax_filter) && $is_ajax_filter) ? 'ajax-filter-enabled
 
 				<div class="product-refresh-wrapper" style="position: relative; min-height: 200px;">
 					<div id="ajax-loader" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.7); z-index: 10; align-items: center; justify-content: center;">
-						<i class="fa-light fa-spinner-third fa-spin spinner-i"></i>
+						<i class="fa-light fa-spinner-third fa-spin" style="font-size: 40px; color: #000;"></i>
 					</div>
 				
 					<div class="product-grid" id="product-grid-container">

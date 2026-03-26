@@ -8,7 +8,7 @@ get_header();
 /* ── MAPPING NewsList.html → archive.php ── */
 
 // 1. Banner
-get_template_part('modules/common/banner');
+get_template_part('template-parts/section/global/banner-archive');
 
 // 2. Breadcrumb
 get_template_part('template-parts/section/global/breadcrumb');
