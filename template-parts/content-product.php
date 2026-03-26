@@ -50,7 +50,10 @@ $specs = get_field('product_summary_specs', $product_id); // Repeater: icon + in
 					<?php foreach ( $specs as $spec ) : ?>
 						<li>
 							<span class="icon"><i class="fa-solid fa-check"></i></span>
-							<?php echo esc_html($spec['label']); ?>: <span><?php echo esc_html($spec['value']); ?></span>
+							<?php if($spec['label']): ?>
+								<?php echo esc_html($spec['label']); ?>: 
+							<?php endif; ?>
+							<span><?php echo esc_html($spec['value']); ?></span>
 						</li>
 					<?php endforeach; ?>
 				</ul>

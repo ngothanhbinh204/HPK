@@ -37,7 +37,6 @@ $view_shop = get_field('view_shop');
 					$args = array(
 						'post_type'      => 'product',
 						'posts_per_page' => 12,
-						/* Có thể thêm meta_query để lọc sản phẩm đang giảm giá */
 					);
 
 					if ( $sale_cats ) {

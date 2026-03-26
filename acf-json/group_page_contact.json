@@ -68,6 +68,15 @@
                     "name": "link",
                     "type": "link",
                     "return_format": "array"
+                },
+                {
+                    "key": "field_contact_item_content",
+                    "label": "Nội dung",
+                    "name": "content",
+                    "type": "wysiwyg",
+                    "tabs": "all",
+                    "toolbar": "full",
+                    "media_upload": 1
                 }
             ]
         },
