@@ -108,12 +108,7 @@ $rental_note = get_field('product_rental_note'); // Textarea
 					<div class="label"><?php _e('Mô tả', 'canhcamtheme'); ?></div>
 					<ul class="checkmark-list">
 						<?php foreach ( $summary_specs as $spec ) : ?>
-							<li>
-								<?php if($spec['label']): ?>
-									<strong><?php echo esc_html($spec['label']); ?>:</strong> 
-								<?php endif; ?>
-								<span><?php echo esc_html($spec['value']); ?></span>
-							</li>
+							<li><strong><?php echo esc_html($spec['label']); ?>:</strong> <span><?php echo esc_html($spec['value']); ?></span></li>
 						<?php endforeach; ?>
 					</ul>
 				</div>

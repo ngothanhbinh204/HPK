@@ -54,11 +54,10 @@
 		// Tab Click Event
 		$(document).on('click', '.home-4 .tab-item', function(e) {
 			const $this = $(this);
-			const $section = $this.closest('.home-4');
 			const categoryId = $this.attr('data-category-id') || 'all';
-			const categoryPool = $section.find('ul').attr('data-category-pool') || '';
-			const swiperWrapper = $section.find('.home-4-swiper .swiper-wrapper');
-			const loadingOverlay = $section.find('.loading-overlay');
+			const categoryPool = section.find('ul').attr('data-category-pool') || '';
+			const swiperWrapper = section.find('.swiper-wrapper');
+			const loadingOverlay = section.find('.loading-overlay');
 
 			if ($this.hasClass('active')) return;
 
@@ -80,28 +79,14 @@
 				success: function(response) {
 					if (response.success) {
 						const data = response.data;
-						console.log("[DEBUG] Home Filter AJAX Success:", data);
-						
-						let htmlString = "";
-						if (typeof data === 'object' && typeof data.html !== 'undefined') {
-							htmlString = data.html;
+						if (typeof data === 'object' && data.html) {
+							swiperWrapper.html(data.html);
 							console.log(`[DEBUG] Home Category Products Count: ${data.count}`);
 						} else {
-							htmlString = typeof data === 'string' ? data : '';
+							swiperWrapper.html(data);
 						}
-
-						// Use native Swiper API for DOM manipulation if instance is alive
-						if (home4Swiper) {
-							home4Swiper.removeAllSlides();
-							home4Swiper.appendSlide(htmlString);
-							home4Swiper.update();
-							home4Swiper.slideTo(0);
-						} else {
-							// Strict jQuery fallback
-							const freshWrapper = $section.find('.home-4-swiper .swiper-wrapper');
-							freshWrapper.empty().append(htmlString);
-							initSwiper();
-						}
+						
+						initSwiper();
 						
 						// Re-init AOS & Lozad
 						if (typeof AOS !== 'undefined') AOS.refresh();
@@ -369,6 +354,10 @@
 							}, 500);
 						}
 
+						// Update Debug Count
+						const totalPosts = data.total || 0;
+						console.log(`[DEBUG] Filtered Products Count (Archive): ${totalPosts}`);
+						$('#product-count').text(`(${totalPosts} sản phẩm)`);
 					}
 
 					refreshPlugins();

@@ -301,22 +301,21 @@ function filter_products_by_category_handler() {
 			array(
 				'taxonomy' => 'product_cat',
 				'field'    => 'term_id',
-				'terms'    => $category_id,
+				'terms'    => array( (int) $category_id ),
+				'operator' => 'IN'
 			),
 		);
-	} elseif ( !empty($category_pool) ) {
+	} elseif ( $category_pool ) {
 		$pool_array = array_map('intval', explode(',', $category_pool));
 		$args['tax_query'] = array(
 			array(
 				'taxonomy' => 'product_cat',
 				'field'    => 'term_id',
 				'terms'    => $pool_array,
+				'operator' => 'IN'
 			),
 		);
 	}
-	
-	// Khắc phục lỗi ngôn ngữ nếu có WPML AJAX (bảo đảm lấy đúng ngôn ngữ hiện tại nếu WPML thất lạc config)
-	// $args['suppress_filters'] = false; // Mặc định false
 
 	$query = new WP_Query($args);
 

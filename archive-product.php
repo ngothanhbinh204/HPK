@@ -20,36 +20,11 @@ if ( !isset($is_included_in_page) ) {
 // Logic: Check if we are on Bán Máy Page (Page Template)
 $is_product_page_template = is_page_template('templates/template-product-list.php');
 $current_term = get_queried_object();
-$raw_terms = get_terms(array(
+$terms = get_terms(array(
 	'taxonomy'   => 'product_cat',
 	'hide_empty' => true,
 ));
-
-// ACF: Lấy cấu hình Loại hình sản phẩm hiển thị của Trang hiện tại
-$current_page_id = get_queried_object_id();
-$selected_product_types = get_field('page_product_type', $current_page_id);
-
-// Lọc lại các Danh mục để chỉ hiển thị các Danh mục khớp với Loại hình (Bán máy/Cho thuê) của trang
-$terms = array();
-if ($raw_terms && !is_wp_error($raw_terms)) {
-	foreach ($raw_terms as $term) {
-		$cat_product_types = get_field('product_cat_type', $term);
-
-		// Nếu danh mục có gán Loại hình cụ thể, nó phải trùng khớp ít nhất 1 loại hình với trang hiện tại
-		if (!empty($cat_product_types) && !empty($selected_product_types)) {
-			$overlap = array_intersect($cat_product_types, $selected_product_types);
-			if (!empty($overlap)) {
-				$terms[] = $term;
-			}
-		} 
-		// Nếu danh mục CHƯA được cấu hình gán vào Loại hình nào, thì hiển thị mặc định
-		else if (empty($cat_product_types)) {
-			$terms[] = $term;
-		}
-	}
-}
-
-$first_term = (!empty($terms)) ? $terms[0] : null;
+$first_term = ($terms && !is_wp_error($terms)) ? $terms[0] : null;
 
 // Filter Values from URL
 $min_price = isset($_GET['min_price']) ? intval($_GET['min_price']) : 0;
@@ -141,7 +116,9 @@ $ajax_class = (isset($is_ajax_filter) && $is_ajax_filter) ? 'ajax-filter-enabled
 							echo isset($product_title) ? esc_html($product_title) : __('Sản phẩm', 'canhcamtheme');
 						}
 						?></span>
-						
+						<span id="product-count" class="rem:text-base font-normal lowercase ml-2">
+							(<?php echo $GLOBALS['wp_query']->found_posts; ?> <?php _e('sản phẩm', 'canhcamtheme'); ?>)
+						</span>
 					</h1>
 					<button class="btn btn-primary btn-remove-filter lg:ml-auto">
 						<i class="fa-light fa-filter-slash"></i>

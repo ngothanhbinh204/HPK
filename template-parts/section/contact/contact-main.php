@@ -22,9 +22,7 @@ $form_shortcode = get_field('contact_form_shortcode');
 								<div class="icon">
 									<i class="fa-light <?php echo esc_attr($item['icon']); ?>"></i>
 								</div>
-								<div class="text">
-									<?php echo wp_kses_post($item['content']); ?>
-								</div>
+								<a href="<?php echo $item['link']['url']; ?>" class="text"><?php echo $item['link']['title']; ?></a>
 							</div>
 						<?php endforeach; ?>
 					<?php endif; ?>
